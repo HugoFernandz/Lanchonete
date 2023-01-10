@@ -69,6 +69,8 @@
   <ItemGroup>
     <Content Include="Default.aspx" />
     <Content Include="Entity\StyleSheet.css" />
+    <Content Include="Images\Icone.png" />
+    <Content Include="Images\MarcaDagua.png" />
     <Content Include="Page\Financeiro.aspx" />
     <Content Include="Page\Historico.aspx" />
     <Content Include="Page\Pessoas.aspx" />
@@ -85,12 +87,15 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Entity\eAcaoTabela.cs" />
-    <Compile Include="Entity\eFormaPagamento.cs" />
-    <Compile Include="Entity\eFuncoes.cs" />
-    <Compile Include="Entity\ePerfil.cs" />
-    <Compile Include="Entity\eTabela.cs" />
+    <Compile Include="Entity\Enum\eAcaoTabela.cs" />
+    <Compile Include="Entity\Enum\eFormaPagamento.cs" />
+    <Compile Include="Entity\Enum\eFuncoes.cs" />
+    <Compile Include="Entity\Enum\ePerfil.cs" />
+    <Compile Include="Entity\Enum\eTabela.cs" />
+    <Compile Include="Entity\Enum\eTipoDrop.cs" />
     <Compile Include="Entity\Pessoa.cs" />
+    <Compile Include="Entity\Usuario.cs" />
+    <Compile Include="Entity\Util.cs" />
     <Compile Include="Page\Financeiro.aspx.cs">
       <DependentUpon>Financeiro.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

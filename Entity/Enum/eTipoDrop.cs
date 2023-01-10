@@ -5,10 +5,8 @@ using System.Web;
 
 namespace SistemaLoja01.Entity
 {
-    public enum ePerfil
+    public enum eTipoDrop
     {
-        Selecione = 0,
-        Administrativo = 1,
-        Corporativo = 2
+        Perfil = 1
     }
 }

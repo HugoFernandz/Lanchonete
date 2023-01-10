@@ -5,11 +5,12 @@ using System.Web;
 
 namespace SistemaLoja01.Entity
 {
-    public enum eFuncoes
+    public enum eFormaPagamento
     {
-        Selecione = 0,
-        Administrador = 1,
-        Colaborador = 2,
-        Cliente = 3
+        A_Vista = 1,
+        Credito = 2,
+        Debito = 3,
+        Pix = 4,
+        Em_Aberto = 5
     }
 }

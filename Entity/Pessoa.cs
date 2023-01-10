@@ -10,5 +10,6 @@ namespace SistemaLoja01.Entity
         public string nome { get; set; }
         public int cpf { get; set; }
         public int contato { get; set; }
+        public string email { get; set; }
     }
 }
