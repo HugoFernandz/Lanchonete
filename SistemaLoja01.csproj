@@ -71,7 +71,6 @@
     <Content Include="Entity\StyleSheet.css" />
     <Content Include="Page\Financeiro.aspx" />
     <Content Include="Page\Historico.aspx" />
-    <Content Include="Page\Menu.ascx" />
     <Content Include="Page\Pessoas.aspx" />
     <Content Include="Page\Produtos.aspx" />
     <Content Include="Page\Servicos.aspx" />
@@ -105,13 +104,6 @@
     </Compile>
     <Compile Include="Page\Historico.aspx.designer.cs">
       <DependentUpon>Historico.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Page\Menu.ascx.cs">
-      <DependentUpon>Menu.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Page\Menu.ascx.designer.cs">
-      <DependentUpon>Menu.ascx</DependentUpon>
     </Compile>
     <Compile Include="Page\Pessoas.aspx.cs">
       <DependentUpon>Pessoas.aspx</DependentUpon>
