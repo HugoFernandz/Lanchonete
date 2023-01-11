@@ -5,10 +5,11 @@ using System.Web;
 
 namespace SistemaLoja01.Entity
 {
-    public enum eTipoDrop
+    public enum eTipoProduto
     {
-        TipoUsuario = 1,
-        TipoCadastro = 2,
-        TipoProduto = 3
+        Bebida = 1,
+        Salgado = 2,
+        Lanche = 3,
+        Doces = 4
     }
 }

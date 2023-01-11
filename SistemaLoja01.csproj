@@ -91,10 +91,12 @@
     <Compile Include="Entity\Enum\eAcaoTabela.cs" />
     <Compile Include="Entity\Enum\eFormaPagamento.cs" />
     <Compile Include="Entity\Enum\eTipoCadastro.cs" />
+    <Compile Include="Entity\Enum\eTipoProduto.cs" />
     <Compile Include="Entity\Enum\eTipoUsuario.cs" />
     <Compile Include="Entity\Enum\eTabela.cs" />
     <Compile Include="Entity\Enum\eTipoDrop.cs" />
     <Compile Include="Entity\Pessoa.cs" />
+    <Compile Include="Entity\Produto.cs" />
     <Compile Include="Entity\Usuario.cs" />
     <Compile Include="Entity\Util.cs" />
     <Compile Include="Erro.aspx.cs">
