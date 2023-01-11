@@ -33,13 +33,13 @@ namespace SistemaLoja01.Page
         protected global::System.Web.UI.WebControls.TextBox txtBNome;
 
         /// <summary>
-        /// Controle ddlBPerfil.
+        /// Controle ddlBTipoUsuario.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlBPerfil;
+        protected global::System.Web.UI.WebControls.DropDownList ddlBTipoUsuario;
 
         /// <summary>
         /// Controle TableCadastro.
@@ -105,13 +105,13 @@ namespace SistemaLoja01.Page
         protected global::System.Web.UI.WebControls.TextBox txtSenha;
 
         /// <summary>
-        /// Controle ddlPerfil.
+        /// Controle ddlTipoUsuario.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlPerfil;
+        protected global::System.Web.UI.WebControls.DropDownList ddlTipoUsuario;
 
         /// <summary>
         /// Controle rblStatus.

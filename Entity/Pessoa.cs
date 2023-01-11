@@ -12,5 +12,7 @@ namespace SistemaLoja01.Entity
         public long contato { get; set; }
         public string email { get; set; }
         public int funcao { get; set; }
+        public bool status { get; set; }
+
     }
 }

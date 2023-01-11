@@ -16,8 +16,8 @@ namespace SistemaLoja01.Page
             if (!Page.IsPostBack)
             {
                 Util util = new Util();
-                util.ListaDropdown(ddlTipoCadastro, ((int)eTipoDrop.Cadastro));
-                util.ListaDropdown(ddlBTipoCadastro, ((int)eTipoDrop.Cadastro));
+                util.ListaDropdown(ddlTipoCadastro, ((int)eTipoDrop.TipoCadastro));
+                util.ListaDropdown(ddlBTipoCadastro, ((int)eTipoDrop.TipoCadastro));
                 //Session["frmUsuarios"] = 0;
 
                 DataTable data = new DataTable();

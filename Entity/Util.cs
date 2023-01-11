@@ -13,7 +13,7 @@ namespace SistemaLoja01.Entity
             switch (TipoDropDown)
             {
                 case 1:
-                    NomeDropDown.DataSource = Enum.GetNames(typeof(ePerfil));
+                    NomeDropDown.DataSource = Enum.GetNames(typeof(eTipoUsuario));
                     NomeDropDown.DataBind();
                     NomeDropDown.Items.Insert(0, " Selecione ");
                     break;

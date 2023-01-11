@@ -5,7 +5,7 @@ using System.Web;
 
 namespace SistemaLoja01.Entity
 {
-    public enum ePerfil
+    public enum eTipoUsuario
     {
         Administrativo = 1,
         Corporativo = 2

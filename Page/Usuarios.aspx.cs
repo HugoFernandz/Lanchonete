@@ -15,8 +15,8 @@ namespace SistemaLoja01.Page
             if (!Page.IsPostBack)
             {
                 Util util = new Util();
-                util.ListaDropdown(ddlPerfil, ((int)eTipoDrop.Perfil));
-                util.ListaDropdown(ddlBPerfil, ((int)eTipoDrop.Perfil));
+                util.ListaDropdown(ddlTipoUsuario, ((int)eTipoDrop.TipoUsuario));
+                util.ListaDropdown(ddlBTipoUsuario, ((int)eTipoDrop.TipoUsuario));
                 //Session["frmUsuarios"] = 0;
 
                 DataTable data = new DataTable();
@@ -50,12 +50,12 @@ namespace SistemaLoja01.Page
             pessoa.cpf = Convert.ToInt64(TxtCPF.Text);
             pessoa.contato = Convert.ToInt64(txtContato.Text);
             pessoa.email = txtEmail.Text;
+            pessoa.status = Convert.ToBoolean(Convert.ToInt32(rblStatus.SelectedValue));
 
             usuarios.pessoa = pessoa;
             usuarios.login = txtLogin.Text;
             usuarios.senha = txtSenha.Text;
-            usuarios.status = Convert.ToBoolean(Convert.ToInt32(rblStatus.SelectedValue));
-            usuarios.perfil = ddlPerfil.SelectedIndex;
+            usuarios.tipousuario = ddlTipoUsuario.SelectedIndex;
 
             Limpa_Campos();
         }
@@ -66,7 +66,7 @@ namespace SistemaLoja01.Page
 
             pessoa.nome = txtBNome.Text;
             usuarios.pessoa = pessoa;
-            usuarios.perfil = ddlBPerfil.SelectedIndex;
+            usuarios.tipousuario = ddlBTipoUsuario.SelectedIndex;
 
             Limpa_Campos();
 
@@ -84,13 +84,13 @@ namespace SistemaLoja01.Page
                 txtSenha.Text = string.Empty;
 
                 rblStatus.SelectedIndex = -1;
-                ddlPerfil.SelectedIndex = 0;
+                ddlTipoUsuario.SelectedIndex = 0;
             }
 
             if (TableBusca.Visible)
             {
                 txtBNome.Text = string.Empty;
-                ddlBPerfil.SelectedIndex = 0;
+                ddlBTipoUsuario.SelectedIndex = 0;
             }
         }
     }

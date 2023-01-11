@@ -17,8 +17,8 @@
         </asp:TableRow>
         <asp:TableRow>
             <asp:TableCell>
-                <asp:Label runat="server">Perfil: </asp:Label>
-                <asp:DropDownList ID="ddlBPerfil" runat="server">
+                <asp:Label runat="server">Tipo Usuario: </asp:Label>
+                <asp:DropDownList ID="ddlBTipoUsuario" runat="server">
                 </asp:DropDownList>
             </asp:TableCell>
         </asp:TableRow>
@@ -73,8 +73,8 @@
         </asp:TableRow>
         <asp:TableRow>
             <asp:TableCell>
-                <asp:Label runat="server">Perfil: </asp:Label>
-                <asp:DropDownList ID="ddlPerfil" runat="server">
+                <asp:Label runat="server">Tipo Usuario: </asp:Label>
+                <asp:DropDownList ID="ddlTipoUsuario" runat="server">
                 </asp:DropDownList>
             </asp:TableCell>
         </asp:TableRow>

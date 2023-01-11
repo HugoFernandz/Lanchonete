@@ -91,7 +91,7 @@
     <Compile Include="Entity\Enum\eAcaoTabela.cs" />
     <Compile Include="Entity\Enum\eFormaPagamento.cs" />
     <Compile Include="Entity\Enum\eTipoCadastro.cs" />
-    <Compile Include="Entity\Enum\ePerfil.cs" />
+    <Compile Include="Entity\Enum\eTipoUsuario.cs" />
     <Compile Include="Entity\Enum\eTabela.cs" />
     <Compile Include="Entity\Enum\eTipoDrop.cs" />
     <Compile Include="Entity\Pessoa.cs" />
