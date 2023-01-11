@@ -16,26 +16,25 @@ namespace SistemaLoja01.Page
             {
                 Util util = new Util();
                 util.ListaDropdown(ddlPerfil, ((int)eTipoDrop.Perfil));
-                //Session["frmStatus"] = 0;
+                //Session["frmUsuarios"] = 0;
             }
         }
 
         protected void Cadastro_Click(object sender, EventArgs e)
         {
-            Pessoa PessoaUsuarios = new Pessoa();
+            Usuario usuarios = new Usuario();
+            Pessoa pessoa = new Pessoa();
 
-            //PessoaUsuarios.Pessoa.
-            string nome = txtNome.Text;
-            string cpf = TxtCPF.Text;
-            string contato = txtContato.Text;
-            string email = txtEmail.Text;
-            string login = txtLogin.Text;
-            string senha = txtSenha.Text;
-            int status = Convert.ToInt32(rblStatus.SelectedValue);
+            pessoa.nome = txtNome.Text;
+            pessoa.cpf = Convert.ToInt64(TxtCPF.Text);
+            pessoa.contato = Convert.ToInt64(txtContato.Text);
+            pessoa.email = txtEmail.Text;
 
-            int perfil = 0;
-            if (ddlPerfil.SelectedIndex == 0) perfil = 0;
-            else perfil = (int)Enum.Parse(typeof(ePerfil), ddlPerfil.SelectedValue);
+            usuarios.pessoa = pessoa;
+            usuarios.login = txtLogin.Text;
+            usuarios.senha = txtSenha.Text;
+            usuarios.status = Convert.ToBoolean(Convert.ToInt32(rblStatus.SelectedValue));
+            usuarios.perfil = ddlPerfil.SelectedIndex;
 
             Limpa_Campos();
         }
