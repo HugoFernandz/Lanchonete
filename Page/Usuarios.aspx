@@ -2,7 +2,8 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
     <%--<table style="background-image: url(/Images/MarcaDagua.png); background-repeat: no-repeat; background-position: center; width: 100%;">--%>
-        <asp:Table runat="server" ID="TableBusca">
+
+    <asp:Table runat="server" ID="TableBusca">
         <asp:TableRow>
             <asp:TableCell>
                     <asp:Label runat="server">Buscar Usuários</asp:Label>
@@ -89,6 +90,50 @@
         <asp:TableRow>
             <asp:TableCell>
                     <asp:Button runat="server" OnClick="Cadastro_Click" Text="Cadastrar"/>
+            </asp:TableCell>
+        </asp:TableRow>
+    </asp:Table>
+
+    <asp:Table runat="server">
+        <asp:TableRow>
+            <asp:TableCell>
+                <asp:GridView ID="GridViewUsuarios" EmptyDataText="Nenhum Registro Localizado" CellPadding="4" AllowPaging="true" PageSize="20"
+                    CellSpacing="0" AutoGenerateColumns="false" BorderWidth="1" CssClass="grid" HeaderStyle-BackColor="#D1D2D4" RowStyle-BackColor="#FFFFFF" runat="server">
+                    <Columns>
+                        <%--                        <asp:TemplateField>
+                            <ItemStyle Width="18px" CssClass="text-center" />
+                            <ItemTemplate>
+                                <asp:Label runat="server" Text='<%# Eval("idStatus") %>' ID="labelStatus" Visible="false" />
+                                <asp:Label runat="server" Text='<%# Eval("Removido") %>' ID="lblRemovido" Visible="false" />
+                                <asp:Label runat="server" Text='<%# Eval("EnumEquivalente") %>' ID="lblenumerador" Visible="false" />
+                                <asp:CheckBox ID="CheckBoxStatus" runat="server" />
+                            </ItemTemplate>
+                        </asp:TemplateField>--%>
+
+<%--                        <asp:TemplateField>
+                            <ItemStyle CssClass="text-center" Width="18px" />
+                            <ItemTemplate>
+                                <asp:Label ID="lblStatus" runat="server" Text='<%# Eval("Status") %>' Visible="false" />
+                                <asp:ImageButton ID="imgStatus" runat="server" CausesValidation="false" ToolTip="Status" />
+                            </ItemTemplate>
+                        </asp:TemplateField>--%>
+
+                        <asp:BoundField DataField="Status" HeaderText="Status" HeaderStyle-ForeColor="#4C4C4C" SortExpression="status" />
+                        <asp:BoundField DataField="Nome" HeaderText="Nome" HeaderStyle-ForeColor="#4C4C4C" SortExpression="nome" />
+                        <asp:BoundField DataField="Perfil" HeaderText="Perfil" HeaderStyle-ForeColor="#4C4C4C" SortExpression="perfil" />
+                        <asp:BoundField DataField="CPF" HeaderText="CPF" HeaderStyle-ForeColor="#4C4C4C" SortExpression="cpf" />
+                        <asp:BoundField DataField="Contato" HeaderText="Contato" HeaderStyle-ForeColor="#4C4C4C" SortExpression="contato" />
+                        <asp:BoundField DataField="Email" HeaderText="Email" HeaderStyle-ForeColor="#4C4C4C" SortExpression="email" />
+                        <asp:BoundField DataField="Login" HeaderText="Login" HeaderStyle-ForeColor="#4C4C4C" SortExpression="login" />
+                        <%--                        <asp:TemplateField HeaderText="Icone">
+                            <ItemStyle Width="18px" CssClass="text-center" />
+                            <ItemTemplate>
+                                <asp:Label runat="server" Text='<%# Eval("CaminhoIcone") %>' ID="lblcaminho" Visible="false" />
+                                <asp:ImageButton ID="imgcaminho" runat="server" CausesValidation="false" ToolTip="Status" heigth="70px" Width="70px" OnClick="pagenewstatus_Click" />
+                            </ItemTemplate>
+                        </asp:TemplateField>--%>
+                    </Columns>
+                </asp:GridView>
             </asp:TableCell>
         </asp:TableRow>
     </asp:Table>
