@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="Default.aspx" />
     <Content Include="Entity\StyleSheet.css" />
+    <Content Include="Erro.aspx" />
     <Content Include="Images\Icone.png" />
     <Content Include="Images\MarcaDagua.png" />
     <Content Include="Page\Financeiro.aspx" />
@@ -96,6 +97,13 @@
     <Compile Include="Entity\Pessoa.cs" />
     <Compile Include="Entity\Usuario.cs" />
     <Compile Include="Entity\Util.cs" />
+    <Compile Include="Erro.aspx.cs">
+      <DependentUpon>Erro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Erro.aspx.designer.cs">
+      <DependentUpon>Erro.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Page\Financeiro.aspx.cs">
       <DependentUpon>Financeiro.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

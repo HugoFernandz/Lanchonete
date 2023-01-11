@@ -15,6 +15,33 @@ namespace SistemaLoja01.Page
     {
 
         /// <summary>
+        /// Controle TableBusca.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Table TableBusca;
+
+        /// <summary>
+        /// Controle txtBNome.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtBNome;
+
+        /// <summary>
+        /// Controle ddlBPerfil.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlBPerfil;
+
+        /// <summary>
         /// Controle TableCadastro.
         /// </summary>
         /// <remarks>

@@ -5,7 +5,6 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
 namespace SistemaLoja01.Page
 {
     public partial class Usuarios : System.Web.UI.Page
@@ -16,6 +15,7 @@ namespace SistemaLoja01.Page
             {
                 Util util = new Util();
                 util.ListaDropdown(ddlPerfil, ((int)eTipoDrop.Perfil));
+                util.ListaDropdown(ddlBPerfil, ((int)eTipoDrop.Perfil));
                 //Session["frmUsuarios"] = 0;
             }
         }
@@ -33,11 +33,25 @@ namespace SistemaLoja01.Page
             usuarios.pessoa = pessoa;
             usuarios.login = txtLogin.Text;
             usuarios.senha = txtSenha.Text;
-            usuarios.status = Convert.ToBoolean(Convert.ToInt32(rblStatus.SelectedValue));
+            //usuarios.status = Convert.ToBoolean(Convert.ToInt32(rblStatus.SelectedValue));
+            usuarios.status = Convert.ToBoolean(rblStatus.SelectedValue);
             usuarios.perfil = ddlPerfil.SelectedIndex;
 
             Limpa_Campos();
         }
+
+        protected void Busca_Click(object sender, EventArgs e)
+        {
+            Usuario usuarios = new Usuario();
+            Pessoa pessoa = new Pessoa();
+
+            pessoa.nome = txtBNome.Text;
+            usuarios.pessoa = pessoa;
+            usuarios.perfil = ddlBPerfil.SelectedIndex;
+
+            Limpa_Campos();
+        }
+        // 
 
         protected void Limpa_Campos()
         {
@@ -51,6 +65,12 @@ namespace SistemaLoja01.Page
 
                 rblStatus.SelectedIndex = -1;
                 ddlPerfil.SelectedIndex = 0;
+            }
+
+            if (TableBusca.Visible)
+            {
+                txtBNome.Text = string.Empty;
+                ddlBPerfil.SelectedIndex = 0;
             }
         }
     }
