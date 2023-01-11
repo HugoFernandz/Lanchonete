@@ -5,7 +5,7 @@ using System.Web;
 
 namespace SistemaLoja01.Entity
 {
-    public enum eFuncoes
+    public enum eTipoCadastro
     {
         Administrador = 1,
         Colaborador = 2,

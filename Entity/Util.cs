@@ -16,7 +16,11 @@ namespace SistemaLoja01.Entity
                     NomeDropDown.DataSource = Enum.GetNames(typeof(ePerfil));
                     NomeDropDown.DataBind();
                     NomeDropDown.Items.Insert(0, " Selecione ");
-                    //NomeDropDown.SelectedIndex = 0;
+                    break;
+                case 2:
+                    NomeDropDown.DataSource = Enum.GetNames(typeof(eTipoCadastro));
+                    NomeDropDown.DataBind();
+                    NomeDropDown.Items.Insert(0, " Selecione ");
                     break;
             }
         }

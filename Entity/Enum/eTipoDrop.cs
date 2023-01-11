@@ -7,6 +7,7 @@ namespace SistemaLoja01.Entity
 {
     public enum eTipoDrop
     {
-        Perfil = 1
+        Perfil = 1,
+        Cadastro = 2
     }
 }
