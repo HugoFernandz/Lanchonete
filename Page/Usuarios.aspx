@@ -80,8 +80,52 @@
         </asp:TableRow>
         <asp:TableRow>
             <asp:TableCell>
+                    <asp:Button runat="server" OnClick="Cadastro_Click" Text="Cadastrar"/>
+            </asp:TableCell>
+        </asp:TableRow>
+    </asp:Table>
+
+        <asp:Table runat="server" ID="TableAlterar">
+        <asp:TableRow>
+            <asp:TableCell>
+                    <asp:Label runat="server">Alterar Usuários</asp:Label>
+            </asp:TableCell>
+        </asp:TableRow>
+        <asp:TableRow>
+            <asp:TableCell>
+                <asp:Label runat="server">Nome: </asp:Label>
+                <asp:TextBox runat="server" ID="txtANome"></asp:TextBox>
+            </asp:TableCell>
+        </asp:TableRow>
+        <asp:TableRow>
+            <asp:TableCell>
+                <asp:Label runat="server">CPF: </asp:Label>
+                <asp:TextBox runat="server" ID="txtACPF"></asp:TextBox>
+            </asp:TableCell>
+        </asp:TableRow>
+        <asp:TableRow>
+            <asp:TableCell>
+                <asp:Label runat="server">Contato: </asp:Label>
+                <asp:TextBox runat="server" ID="txtAContato"></asp:TextBox>
+            </asp:TableCell>
+        </asp:TableRow>
+        <asp:TableRow>
+            <asp:TableCell>
+                <asp:Label runat="server">Email: </asp:Label>
+                <asp:TextBox runat="server" ID="txtAEmail"></asp:TextBox>
+            </asp:TableCell>
+        </asp:TableRow>
+        <asp:TableRow>
+            <asp:TableCell>
+                <asp:Label runat="server">Tipo Usuario: </asp:Label>
+                <asp:DropDownList ID="ddlATipoUsuario" runat="server">
+                </asp:DropDownList>
+            </asp:TableCell>
+        </asp:TableRow>
+        <asp:TableRow>
+            <asp:TableCell>
                 <asp:Label runat="server">Status: </asp:Label>
-                <asp:RadioButtonList ID="rblStatus" runat="server">
+                <asp:RadioButtonList ID="rblAStatus" runat="server">
                     <asp:ListItem Text="Ativo" Value="1" />
                     <asp:ListItem Text="Inativo" Value="0" />
                 </asp:RadioButtonList>
@@ -89,7 +133,7 @@
         </asp:TableRow>
         <asp:TableRow>
             <asp:TableCell>
-                    <asp:Button runat="server" OnClick="Cadastro_Click" Text="Cadastrar"/>
+                    <asp:Button runat="server" OnClick="Alterar_Click" Text="Alterar"/>
             </asp:TableCell>
         </asp:TableRow>
     </asp:Table>

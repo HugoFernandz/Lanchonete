@@ -51,7 +51,20 @@ namespace SistemaLoja01.Page
             produto.status = true;
 
             Limpa_Campos();
+        }        
+        protected void Alterar_Click(object sender, EventArgs e)
+        {
+            Produto produto = new Produto();
+
+            produto.nome = txtANome.Text;
+            produto.preco = Convert.ToDouble(txtAPreco.Text);
+            produto.quantidade = Convert.ToInt32(txtAQuantidade.Text);
+            produto.tipoproduto = ddlATipoProduto.SelectedIndex;
+            produto.status = Convert.ToBoolean(Convert.ToInt32(rblAStatus.SelectedValue));
+
+            Limpa_Campos();
         }
+
         protected void Busca_Click(object sender, EventArgs e)
         {
             Produto produto = new Produto();
@@ -76,6 +89,15 @@ namespace SistemaLoja01.Page
             {
                 txtBNome.Text = string.Empty;
                 ddlBTipoProduto.SelectedIndex = 0;
+            }
+
+            if (TableAlterar.Visible)
+            {
+                txtANome.Text = string.Empty;
+                txtAPreco.Text = string.Empty;
+                txtAQuantidade.Text = string.Empty;
+                ddlATipoProduto.SelectedIndex = 0;
+                rblAStatus.SelectedIndex = -1;
             }
         }
     }

@@ -11,7 +11,7 @@ namespace SistemaLoja01.Entity
         public long cpf { get; set; }
         public long contato { get; set; }
         public string email { get; set; }
-        public int funcao { get; set; }
+        public int tipocadastro { get; set; }
         public bool status { get; set; }
 
     }

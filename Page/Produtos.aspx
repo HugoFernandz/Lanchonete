@@ -65,6 +65,53 @@
         </asp:TableRow>
     </asp:Table>
 
+    <asp:Table runat="server" ID="TableAlterar">
+        <asp:TableRow>
+            <asp:TableCell>
+                    <asp:Label runat="server">Alterar Produtos</asp:Label>
+            </asp:TableCell>
+        </asp:TableRow>
+        <asp:TableRow>
+            <asp:TableCell>
+                <asp:Label runat="server">Nome: </asp:Label>
+                <asp:TextBox runat="server" ID="txtANome"></asp:TextBox>
+            </asp:TableCell>
+        </asp:TableRow>
+        <asp:TableRow>
+            <asp:TableCell>
+                <asp:Label runat="server">Preço: </asp:Label>
+                <asp:TextBox runat="server" ID="txtAPreco"></asp:TextBox>
+            </asp:TableCell>
+        </asp:TableRow>
+        <asp:TableRow>
+            <asp:TableCell>
+                <asp:Label runat="server">Quantidade: </asp:Label>
+                <asp:TextBox runat="server" ID="txtAQuantidade"></asp:TextBox>
+            </asp:TableCell>
+        </asp:TableRow>
+        <asp:TableRow>
+            <asp:TableCell>
+                <asp:Label runat="server">Tipo Produto: </asp:Label>
+                <asp:DropDownList ID="ddlATipoProduto" runat="server">
+                </asp:DropDownList>
+            </asp:TableCell>
+        </asp:TableRow>
+        <asp:TableRow>
+            <asp:TableCell>
+                <asp:Label runat="server">Status: </asp:Label>
+                <asp:RadioButtonList ID="rblAStatus" runat="server">
+                    <asp:ListItem Text="Ativo" Value="1" />
+                    <asp:ListItem Text="Inativo" Value="0" />
+                </asp:RadioButtonList>
+            </asp:TableCell>
+        </asp:TableRow>
+        <asp:TableRow>
+            <asp:TableCell>
+                    <asp:Button runat="server" OnClick="Alterar_Click" Text="Alterar"/>
+            </asp:TableCell>
+        </asp:TableRow>
+    </asp:Table>
+
     <asp:Table runat="server">
         <asp:TableRow>
             <asp:TableCell>

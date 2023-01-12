@@ -49,11 +49,24 @@ namespace SistemaLoja01.Page
             pessoa.cpf = Convert.ToInt64(TxtCPF.Text);
             pessoa.contato = Convert.ToInt64(txtContato.Text);
             pessoa.email = txtEmail.Text;
-            pessoa.funcao = ddlTipoCadastro.SelectedIndex;
+            pessoa.tipocadastro = ddlTipoCadastro.SelectedIndex;
 
             //usuarios.login = txtLogin.Text;
             //usuarios.senha = txtSenha.Text;
             //usuarios.status = Convert.ToBoolean(Convert.ToInt32(rblStatus.SelectedValue));
+
+            Limpa_Campos();
+        }
+        protected void Alterar_Click(object sender, EventArgs e)
+        {
+            Pessoa pessoa = new Pessoa();
+
+            pessoa.nome = txtANome.Text;
+            pessoa.cpf = Convert.ToInt64(txtACPF.Text);
+            pessoa.contato = Convert.ToInt64(txtAContato.Text);
+            pessoa.email = txtAEmail.Text;
+            pessoa.tipocadastro = ddlATipoCadastro.SelectedIndex;
+            pessoa.status = Convert.ToBoolean(Convert.ToInt32(rblAStatus.SelectedValue));
 
             Limpa_Campos();
         }
@@ -63,7 +76,7 @@ namespace SistemaLoja01.Page
             Pessoa pessoa = new Pessoa();
 
             pessoa.nome = txtBNome.Text;
-            pessoa.funcao = ddlBTipoCadastro.SelectedIndex;
+            pessoa.tipocadastro = ddlBTipoCadastro.SelectedIndex;
 
             Limpa_Campos();
 
@@ -90,6 +103,16 @@ namespace SistemaLoja01.Page
             {
                 txtBNome.Text = string.Empty;
                 ddlBTipoCadastro.SelectedIndex = 0;
+            }
+            if (TableAlterar.Visible)
+            {
+                txtANome.Text = string.Empty;
+                txtACPF.Text = string.Empty;
+                txtAContato.Text = string.Empty;
+                txtAEmail.Text = string.Empty;
+
+                ddlATipoCadastro.SelectedIndex = 0;
+                rblAStatus.SelectedIndex = -1;
             }
         }
     }

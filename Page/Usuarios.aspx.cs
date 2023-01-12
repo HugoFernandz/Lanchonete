@@ -50,7 +50,7 @@ namespace SistemaLoja01.Page
             pessoa.cpf = Convert.ToInt64(TxtCPF.Text);
             pessoa.contato = Convert.ToInt64(txtContato.Text);
             pessoa.email = txtEmail.Text;
-            pessoa.status = Convert.ToBoolean(Convert.ToInt32(rblStatus.SelectedValue));
+            //pessoa.status = Convert.ToBoolean(Convert.ToInt32(rblStatus.SelectedValue));
 
             usuarios.pessoa = pessoa;
             usuarios.login = txtLogin.Text;
@@ -72,6 +72,22 @@ namespace SistemaLoja01.Page
 
 
         }
+        protected void Alterar_Click(object sender, EventArgs e)
+        {
+            Usuario usuarios = new Usuario();
+            Pessoa pessoa = new Pessoa();
+
+            pessoa.nome = txtANome.Text;
+            pessoa.cpf = Convert.ToInt64(txtACPF.Text);
+            pessoa.contato = Convert.ToInt64(txtAContato.Text);
+            pessoa.email = txtAEmail.Text;
+            pessoa.status = Convert.ToBoolean(Convert.ToInt32(rblAStatus.SelectedValue));
+
+            usuarios.pessoa = pessoa;
+            usuarios.tipousuario = ddlATipoUsuario.SelectedIndex;
+
+            Limpa_Campos();
+        }
 
         protected void Limpa_Campos()
         {
@@ -80,10 +96,10 @@ namespace SistemaLoja01.Page
                 txtNome.Text = string.Empty;
                 TxtCPF.Text = string.Empty;
                 txtContato.Text = string.Empty;
+                txtEmail.Text = string.Empty;
                 txtLogin.Text = string.Empty;
                 txtSenha.Text = string.Empty;
 
-                rblStatus.SelectedIndex = -1;
                 ddlTipoUsuario.SelectedIndex = 0;
             }
 
@@ -91,6 +107,17 @@ namespace SistemaLoja01.Page
             {
                 txtBNome.Text = string.Empty;
                 ddlBTipoUsuario.SelectedIndex = 0;
+            }
+
+            if (TableAlterar.Visible)
+            {
+                txtANome.Text = string.Empty;
+                txtACPF.Text = string.Empty;
+                txtAContato.Text = string.Empty;
+                txtAEmail.Text = string.Empty;
+
+                ddlTipoUsuario.SelectedIndex = 0;
+                rblAStatus.SelectedIndex = -1;
             }
         }
     }

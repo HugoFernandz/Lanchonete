@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Pessoas.aspx.cs" Inherits="SistemaLoja01.Page.Pessoas" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
-        <asp:Table runat="server" ID="TableBusca">
+    <asp:Table runat="server" ID="TableBusca">
         <asp:TableRow>
             <asp:TableCell>
                     <asp:Label runat="server">Buscar Pessoas</asp:Label>
@@ -71,6 +71,59 @@
         </asp:TableRow>
     </asp:Table>
 
+    <asp:Table runat="server" ID="TableAlterar">
+        <asp:TableRow>
+            <asp:TableCell>
+                    <asp:Label runat="server">Alterar Pessoas</asp:Label>
+            </asp:TableCell>
+        </asp:TableRow>
+        <asp:TableRow>
+            <asp:TableCell>
+                <asp:Label runat="server">Nome: </asp:Label>
+                <asp:TextBox runat="server" ID="txtANome"></asp:TextBox>
+            </asp:TableCell>
+        </asp:TableRow>
+        <asp:TableRow>
+            <asp:TableCell>
+                <asp:Label runat="server">CPF: </asp:Label>
+                <asp:TextBox runat="server" ID="txtACPF"></asp:TextBox>
+            </asp:TableCell>
+        </asp:TableRow>
+        <asp:TableRow>
+            <asp:TableCell>
+                <asp:Label runat="server">Contato: </asp:Label>
+                <asp:TextBox runat="server" ID="txtAContato"></asp:TextBox>
+            </asp:TableCell>
+        </asp:TableRow>
+        <asp:TableRow>
+            <asp:TableCell>
+                <asp:Label runat="server">Email: </asp:Label>
+                <asp:TextBox runat="server" ID="txtAEmail"></asp:TextBox>
+            </asp:TableCell>
+        </asp:TableRow>
+        <asp:TableRow>
+            <asp:TableCell>
+                <asp:Label runat="server">Tipo Cadastro: </asp:Label>
+                <asp:DropDownList ID="ddlATipoCadastro" runat="server">
+                </asp:DropDownList>
+            </asp:TableCell>
+        </asp:TableRow>
+        <asp:TableRow>
+            <asp:TableCell>
+                <asp:Label runat="server">Status: </asp:Label>
+                <asp:RadioButtonList ID="rblAStatus" runat="server">
+                    <asp:ListItem Text="Ativo" Value="1" />
+                    <asp:ListItem Text="Inativo" Value="0" />
+                </asp:RadioButtonList>
+            </asp:TableCell>
+        </asp:TableRow>
+        <asp:TableRow>
+            <asp:TableCell>
+                    <asp:Button runat="server" OnClick="Alterar_Click" Text="Alterar"/>
+            </asp:TableCell>
+        </asp:TableRow>
+    </asp:Table>
+
     <asp:Table runat="server">
         <asp:TableRow>
             <asp:TableCell>
@@ -87,7 +140,7 @@
                             </ItemTemplate>
                         </asp:TemplateField>--%>
 
-<%--                        <asp:TemplateField>
+                        <%--                        <asp:TemplateField>
                             <ItemStyle CssClass="text-center" Width="18px" />
                             <ItemTemplate>
                                 <asp:Label ID="lblStatus" runat="server" Text='<%# Eval("Status") %>' Visible="false" />
