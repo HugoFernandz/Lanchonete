@@ -16,10 +16,10 @@ namespace SistemaLoja01.Page
             {
                 Util util = new Util();
 
-                TableBusca.Visible = true;
+                //TableBusca.Visible = true;
                 util.ListaDropdown(ddlBTipoUsuario, ((int)eTipoDrop.TipoUsuario));
-                util.ListaDropdown(ddlTipoUsuario, ((int)eTipoDrop.TipoUsuario));
-                util.ListaDropdown(ddlATipoUsuario, ((int)eTipoDrop.TipoUsuario));
+                //util.ListaDropdown(ddlTipoUsuario, ((int)eTipoDrop.TipoUsuario));
+                //util.ListaDropdown(ddlATipoUsuario, ((int)eTipoDrop.TipoUsuario));
 
                 //Session["frmUsuarios"] = 0;
             }
@@ -44,10 +44,12 @@ namespace SistemaLoja01.Page
         }
         protected void Busca_Click(object sender, EventArgs e)
         {
+            string a = Request.Form["ctl00$Content$BuscarNome"];
+
             Usuario usuarios = new Usuario();
             Pessoa pessoa = new Pessoa();
             // parametros
-            pessoa.nome = txtBNome.Text;
+            //pessoa.nome = txtBNome.Text;
             usuarios.pessoa = pessoa;
             usuarios.tipousuario = ddlBTipoUsuario.SelectedIndex;
 
@@ -93,7 +95,7 @@ namespace SistemaLoja01.Page
         protected void NovoCadastro_Click(object sender, EventArgs e)
         {
             Limpa_Campos();
-            TableBusca.Visible = false;
+            //TableBusca.Visible = false;
             TableCadastro.Visible = true;
             TableAlterar.Visible = false;
             GridRegistros.Visible = false;
@@ -101,7 +103,7 @@ namespace SistemaLoja01.Page
         protected void VoltarBuscar_Click(object sender, EventArgs e)
         {
             Limpa_Campos();
-            TableBusca.Visible = true;
+            //TableBusca.Visible = true;
             TableCadastro.Visible = false;
             TableAlterar.Visible = false;
             GridRegistros.Visible = false;
@@ -120,11 +122,11 @@ namespace SistemaLoja01.Page
                 ddlTipoUsuario.SelectedIndex = 0;
             }
 
-            if (TableBusca.Visible)
-            {
-                txtBNome.Text = string.Empty;
+            //if (TableBusca.Visible)
+            //{
+                //txtBNome.Text = string.Empty;
                 ddlBTipoUsuario.SelectedIndex = 0;
-            }
+           // }
 
             if (TableAlterar.Visible)
             {
@@ -154,7 +156,7 @@ namespace SistemaLoja01.Page
             usuarios.pessoa = pessoa;
             usuarios.tipousuario = 1;
 
-            TableBusca.Visible = false;
+            //TableBusca.Visible = false;
             TableCadastro.Visible = false;
             TableAlterar.Visible = true;
             GridRegistros.Visible = false;
