@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Pessoas.aspx.cs" Inherits="SistemaLoja01.Page.Pessoas" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
-    <asp:Table runat="server" ID="TableBusca">
+    <asp:Table runat="server" ID="TableBusca" Visible="false">
         <asp:TableRow>
             <asp:TableCell>
                     <asp:Label runat="server">Buscar Pessoas</asp:Label>
@@ -25,9 +25,14 @@
                     <asp:Button runat="server" OnClick="Busca_Click" Text="Buscar"/>
             </asp:TableCell>
         </asp:TableRow>
+        <asp:TableRow>
+            <asp:TableCell>
+                    <asp:Button runat="server" OnClick="NovoCadastro_Click" Text="Novo Cadastro"/>
+            </asp:TableCell>
+        </asp:TableRow>
     </asp:Table>
 
-    <asp:Table runat="server" ID="TableCadastro">
+    <asp:Table runat="server" ID="TableCadastro" Visible="false">
         <asp:TableRow>
             <asp:TableCell>
                     <asp:Label runat="server">Cadastro Pessoas</asp:Label>
@@ -69,9 +74,14 @@
                     <asp:Button runat="server" OnClick="Cadastro_Click" Text="Cadastrar"/>
             </asp:TableCell>
         </asp:TableRow>
+        <asp:TableRow>
+            <asp:TableCell>
+                    <asp:Button runat="server" OnClick="VoltarBuscar_Click" Text="Voltar"/>
+            </asp:TableCell>
+        </asp:TableRow>
     </asp:Table>
 
-    <asp:Table runat="server" ID="TableAlterar">
+    <asp:Table runat="server" ID="TableAlterar" Visible="false">
         <asp:TableRow>
             <asp:TableCell>
                     <asp:Label runat="server">Alterar Pessoas</asp:Label>
@@ -112,8 +122,8 @@
             <asp:TableCell>
                 <asp:Label runat="server">Status: </asp:Label>
                 <asp:RadioButtonList ID="rblAStatus" runat="server">
-                    <asp:ListItem Text="Ativo" Value="1" />
                     <asp:ListItem Text="Inativo" Value="0" />
+                    <asp:ListItem Text="Ativo" Value="1" />
                 </asp:RadioButtonList>
             </asp:TableCell>
         </asp:TableRow>
@@ -122,13 +132,18 @@
                     <asp:Button runat="server" OnClick="Alterar_Click" Text="Alterar"/>
             </asp:TableCell>
         </asp:TableRow>
-    </asp:Table>
-
-    <asp:Table runat="server">
         <asp:TableRow>
             <asp:TableCell>
-                <asp:GridView ID="GridViewPessoas" EmptyDataText="Nenhum Registro Localizado" CellPadding="4" AllowPaging="true" PageSize="20"
-                    CellSpacing="0" AutoGenerateColumns="false" BorderWidth="1" CssClass="grid" HeaderStyle-BackColor="#D1D2D4" RowStyle-BackColor="#FFFFFF" runat="server">
+                    <asp:Button runat="server" OnClick="VoltarBuscar_Click" Text="Voltar"/>
+            </asp:TableCell>
+        </asp:TableRow>
+    </asp:Table>
+
+    <asp:Table runat="server" ID="GridRegistros" Visible="false">
+        <asp:TableRow>
+            <asp:TableCell>
+                <asp:GridView ID="GridViewPessoas" EmptyDataText="Nenhum Registro Localizado" CellPadding="4" AllowPaging="true" PageSize="20" OnRowEditing="GridViewPessoas_RowEditing"
+                    CellSpacing="0" AutoGenerateColumns="false" BorderWidth="1" CssClass="grid" HeaderStyle-BackColor="#D1D2D4" RowStyle-BackColor="#FFFFFF" runat="server" DataKeyNames="IdPessoa">
                     <Columns>
                         <%--                        <asp:TemplateField>
                             <ItemStyle Width="18px" CssClass="text-center" />
@@ -147,6 +162,11 @@
                                 <asp:ImageButton ID="imgStatus" runat="server" CausesValidation="false" ToolTip="Status" />
                             </ItemTemplate>
                         </asp:TemplateField>--%>
+                        <asp:BoundField DataField="Status" HeaderText="Status" HeaderStyle-ForeColor="#4C4C4C" SortExpression="status" />
+
+                        <asp:CommandField ShowEditButton="True" ShowHeader="True" EditText="&lt;img src='../Images/edit-icon.png' title='Editar' alt='Editar' border=0&gt;">
+                            <ItemStyle CssClass="text-center" />
+                        </asp:CommandField>
 
                         <asp:BoundField DataField="TipoCadastro" HeaderText="Tipo Cadastro" HeaderStyle-ForeColor="#4C4C4C" SortExpression="tipocadastro" />
                         <asp:BoundField DataField="Nome" HeaderText="Nome" HeaderStyle-ForeColor="#4C4C4C" SortExpression="nome" />

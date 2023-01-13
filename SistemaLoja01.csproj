@@ -68,8 +68,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Default.aspx" />
-    <Content Include="Entity\StyleSheet.css" />
+    <Content Include="Css\StyleSheet.css" />
     <Content Include="Erro.aspx" />
+    <Content Include="Images\edit-icon.png" />
+    <Content Include="Images\editar.png" />
     <Content Include="Images\Icone.png" />
     <Content Include="Images\MarcaDagua.png" />
     <Content Include="Page\Financeiro.aspx" />

@@ -15,32 +15,15 @@ namespace SistemaLoja01.Page
             if (!Page.IsPostBack)
             {
                 Util util = new Util();
-                util.ListaDropdown(ddlTipoUsuario, ((int)eTipoDrop.TipoUsuario));
+
+                TableBusca.Visible = true;
                 util.ListaDropdown(ddlBTipoUsuario, ((int)eTipoDrop.TipoUsuario));
+                util.ListaDropdown(ddlTipoUsuario, ((int)eTipoDrop.TipoUsuario));
+                util.ListaDropdown(ddlATipoUsuario, ((int)eTipoDrop.TipoUsuario));
+
                 //Session["frmUsuarios"] = 0;
-
-                DataTable data = new DataTable();
-
-                data.Columns.Add("Nome");
-                data.Columns.Add("CPF");
-                data.Columns.Add("Contato");
-                data.Columns.Add("Email");
-                data.Columns.Add("Login");
-                data.Columns.Add("Senha");
-                data.Columns.Add("Status");
-                data.Columns.Add("Perfil");
-
-                data.Rows.Add("Joao","10101010","11987654321","joao@hotmail.com","login1","senha1","Ativo","Administrador");
-                data.Rows.Add("Maria","10101010","11987654321","maria@hotmail.com","login2","senha2","Ativo","Administrador");
-                data.Rows.Add("Antonio","10101010","11987654321","antonio@hotmail.com","login3","senha3","Ativo","Colaborador");
-
-                //GridViewUsuarios.DataSource = Enum.GetNames(typeof(ePerfil));
-                GridViewUsuarios.DataSource = data;
-                GridViewUsuarios.DataBind();
             }
         }
-        // grid de busca
-        // editar
         protected void Cadastro_Click(object sender, EventArgs e)
         {
             Usuario usuarios = new Usuario();
@@ -63,14 +46,33 @@ namespace SistemaLoja01.Page
         {
             Usuario usuarios = new Usuario();
             Pessoa pessoa = new Pessoa();
-
+            // parametros
             pessoa.nome = txtBNome.Text;
             usuarios.pessoa = pessoa;
             usuarios.tipousuario = ddlBTipoUsuario.SelectedIndex;
 
+            // busca / popula
+            DataTable data = new DataTable();
+
+            data.Columns.Add("IdUsuario");
+            data.Columns.Add("Nome");
+            data.Columns.Add("CPF");
+            data.Columns.Add("Contato");
+            data.Columns.Add("Email");
+            data.Columns.Add("Login");
+            data.Columns.Add("Senha");
+            data.Columns.Add("Status");
+            data.Columns.Add("Perfil");
+
+            data.Rows.Add("1","Joao", "10101010", "11987654321", "joao@hotmail.com", "login1", "senha1", "Ativo", "Administrador");
+            data.Rows.Add("2","Maria", "10101010", "11987654321", "maria@hotmail.com", "login2", "senha2", "Ativo", "Administrador");
+            data.Rows.Add("3","Antonio", "10101010", "11987654321", "antonio@hotmail.com", "login3", "senha3", "Ativo", "Colaborador");
+
+            GridRegistros.Visible = true;
+            GridViewUsuarios.DataSource = data;
+            GridViewUsuarios.DataBind();
+
             Limpa_Campos();
-
-
         }
         protected void Alterar_Click(object sender, EventArgs e)
         {
@@ -88,7 +90,22 @@ namespace SistemaLoja01.Page
 
             Limpa_Campos();
         }
-
+        protected void NovoCadastro_Click(object sender, EventArgs e)
+        {
+            Limpa_Campos();
+            TableBusca.Visible = false;
+            TableCadastro.Visible = true;
+            TableAlterar.Visible = false;
+            GridRegistros.Visible = false;
+        }        
+        protected void VoltarBuscar_Click(object sender, EventArgs e)
+        {
+            Limpa_Campos();
+            TableBusca.Visible = true;
+            TableCadastro.Visible = false;
+            TableAlterar.Visible = false;
+            GridRegistros.Visible = false;
+        }
         protected void Limpa_Campos()
         {
             if (TableCadastro.Visible)
@@ -119,6 +136,35 @@ namespace SistemaLoja01.Page
                 ddlTipoUsuario.SelectedIndex = 0;
                 rblAStatus.SelectedIndex = -1;
             }
+        }
+        protected void GridViewUsuarios_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            int iduser = int.Parse(GridViewUsuarios.DataKeys[e.NewEditIndex].Value.ToString());
+
+            // buscar dados do usuario no banco
+
+            Usuario usuarios = new Usuario();
+            Pessoa pessoa = new Pessoa();
+
+            pessoa.nome = "Joao";
+            pessoa.cpf = Convert.ToInt64("10101010");
+            pessoa.contato = Convert.ToInt64("11987654321");
+            pessoa.email = "joao@hotmail.com";
+            pessoa.status = Convert.ToBoolean(Convert.ToInt32(1));
+            usuarios.pessoa = pessoa;
+            usuarios.tipousuario = 1;
+
+            TableBusca.Visible = false;
+            TableCadastro.Visible = false;
+            TableAlterar.Visible = true;
+            GridRegistros.Visible = false;
+
+            txtANome.Text = pessoa.nome;
+            txtACPF.Text = pessoa.cpf.ToString();
+            txtAContato.Text = pessoa.contato.ToString();
+            txtAEmail.Text = pessoa.email;
+            rblAStatus.SelectedIndex = Convert.ToInt32(pessoa.status);
+            ddlATipoUsuario.SelectedIndex = usuarios.tipousuario;
         }
     }
 }

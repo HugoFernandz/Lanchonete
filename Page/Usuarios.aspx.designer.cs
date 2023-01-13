@@ -177,6 +177,15 @@ namespace SistemaLoja01.Page
         protected global::System.Web.UI.WebControls.RadioButtonList rblAStatus;
 
         /// <summary>
+        /// Controle GridRegistros.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Table GridRegistros;
+
+        /// <summary>
         /// Controle GridViewUsuarios.
         /// </summary>
         /// <remarks>

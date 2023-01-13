@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Produtos.aspx.cs" Inherits="SistemaLoja01.Page.Produtos" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
-    <asp:Table runat="server" ID="TableBusca">
+    <asp:Table runat="server" ID="TableBusca" Visible="false">
         <asp:TableRow>
             <asp:TableCell>
                     <asp:Label runat="server">Buscar Produtos</asp:Label>
@@ -25,9 +25,14 @@
                     <asp:Button runat="server" OnClick="Busca_Click" Text="Buscar"/>
             </asp:TableCell>
         </asp:TableRow>
+        <asp:TableRow>
+            <asp:TableCell>
+                    <asp:Button runat="server" OnClick="NovoCadastro_Click" Text="Novo Cadastro"/>
+            </asp:TableCell>
+        </asp:TableRow>
     </asp:Table>
 
-    <asp:Table runat="server" ID="TableCadastro">
+    <asp:Table runat="server" ID="TableCadastro" Visible="false">
         <asp:TableRow>
             <asp:TableCell>
                     <asp:Label runat="server">Cadastro Produtos</asp:Label>
@@ -63,9 +68,14 @@
                     <asp:Button runat="server" OnClick="Cadastro_Click" Text="Cadastrar"/>
             </asp:TableCell>
         </asp:TableRow>
+        <asp:TableRow>
+            <asp:TableCell>
+                    <asp:Button runat="server" OnClick="VoltarBuscar_Click" Text="Voltar"/>
+            </asp:TableCell>
+        </asp:TableRow>
     </asp:Table>
 
-    <asp:Table runat="server" ID="TableAlterar">
+    <asp:Table runat="server" ID="TableAlterar" Visible="false">
         <asp:TableRow>
             <asp:TableCell>
                     <asp:Label runat="server">Alterar Produtos</asp:Label>
@@ -110,13 +120,18 @@
                     <asp:Button runat="server" OnClick="Alterar_Click" Text="Alterar"/>
             </asp:TableCell>
         </asp:TableRow>
-    </asp:Table>
-
-    <asp:Table runat="server">
         <asp:TableRow>
             <asp:TableCell>
-                <asp:GridView ID="GridViewProdutos" EmptyDataText="Nenhum Registro Localizado" CellPadding="4" AllowPaging="true" PageSize="20"
-                    CellSpacing="0" AutoGenerateColumns="false" BorderWidth="1" CssClass="grid" HeaderStyle-BackColor="#D1D2D4" RowStyle-BackColor="#FFFFFF" runat="server">
+                    <asp:Button runat="server" OnClick="VoltarBuscar_Click" Text="Voltar"/>
+            </asp:TableCell>
+        </asp:TableRow>
+    </asp:Table>
+
+    <asp:Table runat="server" ID="GridRegistros" Visible="false">
+        <asp:TableRow>
+            <asp:TableCell>
+                <asp:GridView ID="GridViewProdutos" EmptyDataText="Nenhum Registro Localizado" CellPadding="4" AllowPaging="true" PageSize="20" OnRowEditing="GridViewProdutos_RowEditing"
+                    CellSpacing="0" AutoGenerateColumns="false" BorderWidth="1" CssClass="grid" HeaderStyle-BackColor="#D1D2D4" RowStyle-BackColor="#FFFFFF" runat="server" DataKeyNames="IdProduto">
                     <Columns>
                         <%--                        <asp:TemplateField>
                             <ItemStyle Width="18px" CssClass="text-center" />
@@ -135,11 +150,17 @@
                                 <asp:ImageButton ID="imgStatus" runat="server" CausesValidation="false" ToolTip="Status" />
                             </ItemTemplate>
                         </asp:TemplateField>--%>
+
+                        <asp:BoundField DataField="Status" HeaderText="Status" HeaderStyle-ForeColor="#4C4C4C" SortExpression="status" />
+
+                        <asp:CommandField ShowEditButton="True" ShowHeader="True" EditText="&lt;img src='../Images/edit-icon.png' title='Editar' alt='Editar' border=0&gt;">
+                            <ItemStyle CssClass="text-center" />
+                        </asp:CommandField>
+
                         <asp:BoundField DataField="TipoProduto" HeaderText="Tipo Produto" HeaderStyle-ForeColor="#4C4C4C" SortExpression="tipoproduto" />
                         <asp:BoundField DataField="Nome" HeaderText="Nome" HeaderStyle-ForeColor="#4C4C4C" SortExpression="nome" />
                         <asp:BoundField DataField="Preco" HeaderText="Preco" HeaderStyle-ForeColor="#4C4C4C" SortExpression="preco" />
                         <asp:BoundField DataField="quantidade" HeaderText="Quantidade" HeaderStyle-ForeColor="#4C4C4C" SortExpression="quantidade" />
-                        <asp:BoundField DataField="Status" HeaderText="Status" HeaderStyle-ForeColor="#4C4C4C" SortExpression="status" />
                         <%--                        <asp:TemplateField HeaderText="Icone">
                             <ItemStyle Width="18px" CssClass="text-center" />
                             <ItemTemplate>

@@ -6,7 +6,7 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
-    <link href="Entity/StyleSheet.css" rel="stylesheet" type="text/css" />
+    <link href="Css/StyleSheet.css" rel="stylesheet" type="text/css" />
     <asp:ContentPlaceHolder ID="head" runat="server">
         <body>
             <nav>
@@ -15,7 +15,7 @@
                     <li><a href="#">Administrativo</a>
                         <ul>
                             <li><a href="../Page/Usuarios.aspx">Usuarios Sistema</a></li>
-                            <li><a href="../Page/Pessoas.aspx">Cadastro Pessoas</a></li>
+                            <li><a href="../Page/Pessoas.aspx">Cadastro Pessoal</a></li>
                             <li><a href="../Page/Produtos.aspx">Cadastro Produtos</a></li>
                         </ul>
                     </li>
