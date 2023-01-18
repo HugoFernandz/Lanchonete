@@ -92,7 +92,6 @@
     </Compile>
     <Compile Include="Entity\Enum\eAcaoTabela.cs" />
     <Compile Include="Entity\Enum\eFormaPagamento.cs" />
-    <Compile Include="Entity\Enum\eTipoCadastro.cs" />
     <Compile Include="Entity\Enum\eTipoProduto.cs" />
     <Compile Include="Entity\Enum\eTipoUsuario.cs" />
     <Compile Include="Entity\Enum\eTabela.cs" />

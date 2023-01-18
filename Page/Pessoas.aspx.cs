@@ -31,7 +31,7 @@ namespace SistemaLoja01.Page
             pessoa.cpf = Convert.ToInt64(TxtCPF.Text);
             pessoa.contato = Convert.ToInt64(txtContato.Text);
             pessoa.email = txtEmail.Text;
-            pessoa.tipocadastro = ddlTipoCadastro.SelectedIndex;
+            //pessoa.tipocadastro = ddlTipoCadastro.SelectedIndex;
             pessoa.status = true;
 
             Limpa_Campos();
@@ -44,7 +44,7 @@ namespace SistemaLoja01.Page
             Pessoa pessoa = new Pessoa();
             // parametros
             pessoa.nome = txtBNome.Text;
-            pessoa.tipocadastro = ddlBTipoCadastro.SelectedIndex;
+            //pessoa.tipocadastro = ddlBTipoCadastro.SelectedIndex;
 
             // busca / popula
             DataTable data = new DataTable();
@@ -74,7 +74,7 @@ namespace SistemaLoja01.Page
             pessoa.cpf = Convert.ToInt64(txtACPF.Text);
             pessoa.contato = Convert.ToInt64(txtAContato.Text);
             pessoa.email = txtAEmail.Text;
-            pessoa.tipocadastro = ddlATipoCadastro.SelectedIndex;
+            //pessoa.tipocadastro = ddlATipoCadastro.SelectedIndex;
             pessoa.status = Convert.ToBoolean(Convert.ToInt32(rblAStatus.SelectedValue));
 
             Limpa_Campos();

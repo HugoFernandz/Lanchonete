@@ -10,6 +10,5 @@ namespace SistemaLoja01.Entity
         public Pessoa pessoa { get; set; }
         public string login { get; set; }
         public string senha { get; set; }
-        public int tipousuario { get; set; }
     }
 }

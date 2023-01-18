@@ -8,10 +8,10 @@ namespace SistemaLoja01.Entity
     public class Pessoa
     {
         public string nome { get; set; }
-        public long cpf { get; set; }
-        public long contato { get; set; }
+        public string cpf { get; set; }
+        public string contato { get; set; }
         public string email { get; set; }
-        public int tipocadastro { get; set; }
+        public int tipousuario { get; set; }
         public bool status { get; set; }
 
     }
