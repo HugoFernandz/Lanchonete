@@ -1,9 +1,24 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="Usuarios.aspx.cs" Inherits="SistemaLoja01.Page.Usuarios" %>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
-    
+
     <br />
     <h1>Usuários</h1>
+
+    <div class="alert alert-dismissible alert-success" runat="server" visible="false" id="msgCadastroSucesso">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <strong>
+            <label runat="server" id="txtsucesso" visible="false"></label>
+        </strong>
+    </div>
+
+    <div class="alert alert-dismissible alert-warning" runat="server" visible="false" id="msgCadastroErro">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <strong>
+            <label runat="server" id="txterro" visible="false"></label>
+        </strong>
+        Revise as informações e tente novamente.
+    </div>
 
     <div style="width: fit-content;" class="container-fluid" id="divBuscar" runat="server" visible="false">
         <div class="form-group">
@@ -29,10 +44,24 @@
         </div>
     </div>
 
-    <div style="width: fit-content;" class="container-fluid" id="divRegistros" runat="server" visible="false">
+    <div style="width: fit-content; padding: 20px;" class="container-fluid" id="divRegistros" runat="server" visible="false">
+
+        <div class="row">
+            <div class="col-md-auto">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="txtBuscaNome" placeholder="Buscar nome do usuário" runat="server">
+                </div>
+            </div>
+            <div class="col-md-auto">
+                <div class="form-group">
+                    <asp:ImageButton type="submit" class="btn btn-primary" runat="server" ImageUrl="~/Images/procurar.png" Width="50px" Height="33px" OnClick="BuscaNome_Click" />
+                </div>
+            </div>
+        </div>
+        <br />
         <asp:GridView ID="GridViewUsuarios" EmptyDataText="Nenhum Registro Localizado" CellPadding="4" AllowPaging="true" PageSize="20" OnRowEditing="GridViewUsuarios_RowEditing"
-            CellSpacing="0" AutoGenerateColumns="false" BorderWidth="1" CssClass="d-md-grid" HeaderStyle-BackColor="#D1D2D4"
-            RowStyle-BackColor="#FFFFFF" runat="server" DataKeyNames="IdUsuario">
+            CellSpacing="0" AutoGenerateColumns="false" BorderWidth="1" CssClass="table table-striped" HeaderStyle-BackColor="#33ccff"
+            RowStyle-BackColor="#FFFFFF" AlternatingRowStyle-BackColor="#33ccff" runat="server" DataKeyNames="IdUsuario">
             <Columns>
                 <asp:BoundField DataField="Status" HeaderText="Status" HeaderStyle-ForeColor="#4C4C4C" SortExpression="status" />
                 <asp:CommandField ShowEditButton="True" ShowHeader="True" EditText="&lt;img src='../Images/edit-icon.png' title='Editar' alt='Editar' border=0&gt;">
@@ -46,7 +75,7 @@
                 <asp:BoundField DataField="Login" HeaderText="Login" HeaderStyle-ForeColor="#4C4C4C" SortExpression="login" />
             </Columns>
         </asp:GridView>
-        <div class="row" style="justify-content: right; padding: 57px">
+        <div class="row" style="justify-content: right; padding: 10px 0px 0px 400px">
             <div class="col-md-auto">
                 <div class="form-group">
                     <asp:Button type="submit" class="btn btn-primary" runat="server" Text="Voltar" OnClick="VoltarBuscar_Click" />
@@ -110,11 +139,9 @@
                 </div>
             </div>
             <div class="col-md-auto">
-                <div class="btn-group" role="group" aria-label="Basic radio toggle button group" style="padding: 55px 0px 0px 105px;">
-                    <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" runat="server" checked="">
-                    <label class="btn btn-outline-primary" for="btnradio1">Inativo</label>
-                    <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" runat="server" checked="">
-                    <label class="btn btn-outline-primary" for="btnradio2">Ativo</label>
+                <div class="form-check form-switch" style="padding: 60px 0px 0px 80px;">
+                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" runat="server">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Inativado / Ativado</label>
                 </div>
             </div>
         </div>

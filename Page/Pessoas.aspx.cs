@@ -28,8 +28,8 @@ namespace SistemaLoja01.Page
             Pessoa pessoa = new Pessoa();
 
             pessoa.nome = txtNome.Text;
-            pessoa.cpf = Convert.ToInt64(TxtCPF.Text);
-            pessoa.contato = Convert.ToInt64(txtContato.Text);
+            //pessoa.cpf = Convert.ToInt64(TxtCPF.Text);
+            //pessoa.contato = Convert.ToInt64(txtContato.Text);
             pessoa.email = txtEmail.Text;
             //pessoa.tipocadastro = ddlTipoCadastro.SelectedIndex;
             pessoa.status = true;
@@ -71,8 +71,8 @@ namespace SistemaLoja01.Page
             Pessoa pessoa = new Pessoa();
 
             pessoa.nome = txtANome.Text;
-            pessoa.cpf = Convert.ToInt64(txtACPF.Text);
-            pessoa.contato = Convert.ToInt64(txtAContato.Text);
+            //pessoa.cpf = Convert.ToInt64(txtACPF.Text);
+            //pessoa.contato = Convert.ToInt64(txtAContato.Text);
             pessoa.email = txtAEmail.Text;
             //pessoa.tipocadastro = ddlATipoCadastro.SelectedIndex;
             pessoa.status = Convert.ToBoolean(Convert.ToInt32(rblAStatus.SelectedValue));
@@ -135,8 +135,8 @@ namespace SistemaLoja01.Page
             Pessoa pessoa = new Pessoa();
 
             pessoa.nome = "Joao";
-            pessoa.cpf = Convert.ToInt64("10101010");
-            pessoa.contato = Convert.ToInt64("11987654321");
+            //pessoa.cpf = Convert.ToInt64("10101010");
+            //pessoa.contato = Convert.ToInt64("11987654321");
             pessoa.email = "joao@hotmail.com";
             pessoa.status = Convert.ToBoolean(Convert.ToInt32(1));
 

@@ -10,6 +10,7 @@ namespace SistemaLoja01.Page
 {
     public partial class Usuarios : System.Web.UI.Page
     {
+        //Session["frmUsuarios"] = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -23,12 +24,47 @@ namespace SistemaLoja01.Page
         }
         protected void Busca_Click(object sender, EventArgs e)
         {
+            msgCadastroSucesso.Visible = false;
+            msgCadastroErro.Visible = false;
             divBuscar.Visible = false;
             divRegistros.Visible = true;
             divCadastro.Visible = false;
 
             string nomeusuario = BuscarNome.Value;
             int indiceusuario = ddlBTipoUsuario.SelectedIndex;
+
+            // buscar banco
+
+            DataTable data = new DataTable();
+
+            data.Columns.Add("IdUsuario");
+            data.Columns.Add("Nome");
+            data.Columns.Add("CPF");
+            data.Columns.Add("Contato");
+            data.Columns.Add("Email");
+            data.Columns.Add("Login");
+            data.Columns.Add("Senha");
+            data.Columns.Add("Status");
+            data.Columns.Add("Perfil");
+            data.Rows.Add("1", "Joao", "10101010", "11987654321", "joao@hotmail.com", "login1", "senha1", "Ativo", "Administrador");
+            data.Rows.Add("2", "Maria", "10101010", "11987654321", "maria@hotmail.com", "login2", "senha2", "Ativo", "Administrador");
+            data.Rows.Add("3", "Antonio", "10101010", "11987654321", "antonio@hotmail.com", "login3", "senha3", "Ativo", "Colaborador");
+
+            GridViewUsuarios.EditIndex = -1; // REMOVER CAMPOS EDITADOS
+            GridViewUsuarios.DataSource = data;
+            GridViewUsuarios.DataBind();
+
+            Limpa_Campos();
+        }
+        protected void BuscaNome_Click(object sender, EventArgs e)
+        {
+            msgCadastroSucesso.Visible = false;
+            msgCadastroErro.Visible = false;
+            divBuscar.Visible = false;
+            divRegistros.Visible = true;
+            divCadastro.Visible = false;
+
+            string nomeusuario = txtBuscaNome.Value;
 
             // buscar banco
 
@@ -46,6 +82,8 @@ namespace SistemaLoja01.Page
             data.Rows.Add("2", "Maria", "10101010", "11987654321", "maria@hotmail.com", "login2", "senha2", "Ativo", "Administrador");
             data.Rows.Add("3", "Antonio", "10101010", "11987654321", "antonio@hotmail.com", "login3", "senha3", "Ativo", "Colaborador");
 
+            data.Clear();
+
             GridViewUsuarios.DataSource = data;
             GridViewUsuarios.DataBind();
 
@@ -53,92 +91,73 @@ namespace SistemaLoja01.Page
         }
         protected void NovoCadastro_Click(object sender, EventArgs e)
         {
+
             Limpa_Campos();
 
+            msgCadastroSucesso.Visible = false;
+            msgCadastroErro.Visible = false;
             divBuscar.Visible = false;
             divRegistros.Visible = false;
             divCadastro.Visible = true;
-            btnradio2.Checked = true; // ativo
+            flexSwitchCheckDefault.Checked = true;
         }
         protected void Cadastro_Click(object sender, EventArgs e)
         {
             Usuario usuarios = new Usuario();
             Pessoa pessoa = new Pessoa();
 
-            usuarios.login = txtlogin.Value;
-            usuarios.senha = txtsenha.Value;
+            if (btncadastro.Text == "Cadastrar")
+            {
+                usuarios.login = txtlogin.Value;
+                usuarios.senha = txtsenha.Value;
 
-            pessoa.nome = txtnome.Value;
-            pessoa.cpf = txtcpf.Value;
-            pessoa.contato = txtcontato.Value;
-            pessoa.email = txtemail.Value;
-            pessoa.tipousuario = ddlCtipousuario.SelectedIndex;
-            pessoa.status = true;
+                pessoa.nome = txtnome.Value;
+                pessoa.cpf = txtcpf.Value;
+                pessoa.contato = txtcontato.Value;
+                pessoa.email = txtemail.Value;
+                pessoa.tipousuario = ddlCtipousuario.SelectedIndex;
+                pessoa.status = true;
 
-            usuarios.pessoa = pessoa;
+                usuarios.pessoa = pessoa;
+            }
+            else if (btncadastro.Text == "Alterar")
+            {
+                usuarios.login = txtlogin.Value;
+                usuarios.senha = txtsenha.Value;
 
-            //txtsenha.Disabled = true;
-            //txtnome.Value = usuarios.pessoa.nome;
-            //txtcpf.Value = usuarios.pessoa.cpf.ToString();
-            //txtcontato.Value = usuarios.pessoa.contato.ToString();
-            //txtemail.Value = usuarios.pessoa.email;
-            //ddlCtipousuario.SelectedIndex = usuarios.pessoa.tipousuario;
+                pessoa.nome = txtnome.Value;
+                pessoa.cpf = txtcpf.Value;
+                pessoa.contato = txtcontato.Value;
+                pessoa.email = txtemail.Value;
+                pessoa.tipousuario = ddlCtipousuario.SelectedIndex;
+                pessoa.status = true;
 
-            // 8
+                usuarios.pessoa = pessoa;
+            }
 
+            //msgCadastroSucesso.Visible = true;
+            //txtsucesso.Visible = true;
+            //txtsucesso.InnerText = "Usuario Cadastrado com sucesso !!!";
+            //msgCadastroErro.Visible = false;
 
-            //pessoa.nome = txtNome.Text;
-            //pessoa.cpf = Convert.ToInt64(TxtCPF.Text);
-            //pessoa.contato = Convert.ToInt64(txtContato.Text);
-            //pessoa.email = txtEmail.Text;
-            ////pessoa.status = Convert.ToBoolean(Convert.ToInt32(rblStatus.SelectedValue));
-
-            //usuarios.pessoa = pessoa;
-            //usuarios.login = txtLogin.Text;
-            //usuarios.senha = txtSenha.Text;
-            //usuarios.tipousuario = ddlTipoUsuario.SelectedIndex;
-
-            Limpa_Campos();
-        }
-
-        //divCadastro.Visible = true;
-        //util.ListaDropdown(ddlCtipousuario, ((int)eTipoDrop.TipoUsuario));
-
-        //FieldsetCadastrar.Visible = true;
-
-        //TableBusca.Visible = true;
-        //util.ListaDropdown(ddlTipoUsuario, ((int)eTipoDrop.TipoUsuario));
-        //util.ListaDropdown(ddlATipoUsuario, ((int)eTipoDrop.TipoUsuario));
-
-        //Session["frmUsuarios"] = 0;
-
-
-        protected void Alterar_Click(object sender, EventArgs e)
-        {
-            Usuario usuarios = new Usuario();
-            Pessoa pessoa = new Pessoa();
-
-            //pessoa.nome = txtANome.Text;
-            //pessoa.cpf = Convert.ToInt64(txtACPF.Text);
-            //pessoa.contato = Convert.ToInt64(txtAContato.Text);
-            //pessoa.email = txtAEmail.Text;
-            //pessoa.status = Convert.ToBoolean(Convert.ToInt32(rblAStatus.SelectedValue));
-
-            //usuarios.pessoa = pessoa;
-            //usuarios.tipousuario = ddlATipoUsuario.SelectedIndex;
+            //msgCadastroErro.Visible = true;
+            //txterro.Visible = true;
+            //txterro.InnerText = "Erro ao Cadastrar Usuário ! ";
+            //msgCadastroSucesso.Visible = false;
 
             Limpa_Campos();
         }
-   
         protected void VoltarBuscar_Click(object sender, EventArgs e)
         {
+            if (btncadastro.Text == "Alterar") btncadastro.Text = "Cadastrar";
+
             Limpa_Campos();
-            divRegistros.Visible = false;
+
+            msgCadastroSucesso.Visible = false;
+            msgCadastroErro.Visible = false;
             divBuscar.Visible = true;
-            //TableBusca.Visible = true;
-            //TableCadastro.Visible = false;
-            //TableAlterar.Visible = false;
-            //GridRegistros.Visible = false;
+            divRegistros.Visible = false;
+            divCadastro.Visible = false;
         }
         protected void Limpa_Campos()
         {
@@ -147,37 +166,30 @@ namespace SistemaLoja01.Page
                 BuscarNome.Value = string.Empty;
                 ddlBTipoUsuario.SelectedIndex = 0;
             }
-            // if (TableCadastro.Visible)
-            // {
-            //     txtNome.Text = string.Empty;
-            //     TxtCPF.Text = string.Empty;
-            //     txtContato.Text = string.Empty;
-            //     txtEmail.Text = string.Empty;
-            //     txtLogin.Text = string.Empty;
-            //     txtSenha.Text = string.Empty;
-
-            //     ddlTipoUsuario.SelectedIndex = 0;
-            // }
-
-            // //if (TableBusca.Visible)
-            // //{
-            //     //txtBNome.Text = string.Empty;
-            //     ddlBTipoUsuario.SelectedIndex = 0;
-            //// }
-
-            // if (TableAlterar.Visible)
-            // {
-            //     txtANome.Text = string.Empty;
-            //     txtACPF.Text = string.Empty;
-            //     txtAContato.Text = string.Empty;
-            //     txtAEmail.Text = string.Empty;
-
-            //     ddlTipoUsuario.SelectedIndex = 0;
-            //     rblAStatus.SelectedIndex = -1;
-            // }
+            if (divCadastro.Visible)
+            {
+                txtlogin.Value = string.Empty;
+                txtsenha.Value = string.Empty;
+                txtnome.Value = string.Empty;
+                txtcpf.Value = string.Empty;
+                txtcontato.Value = string.Empty;
+                txtemail.Value = string.Empty;
+                flexSwitchCheckDefault.Checked = false;
+                ddlCtipousuario.SelectedIndex = 0;
+            }
+            if (divRegistros.Visible)
+            {
+                txtBuscaNome.Value = string.Empty;
+            }
         }
         protected void GridViewUsuarios_RowEditing(object sender, GridViewEditEventArgs e)
         {
+            msgCadastroSucesso.Visible = false;
+            msgCadastroErro.Visible = false;
+            divBuscar.Visible = false;
+            divRegistros.Visible = false;
+            divCadastro.Visible = true;
+
             //int iduser = int.Parse(GridViewUsuarios.DataKeys[e.NewEditIndex].Value.ToString());
 
             // buscar dados do usuario no banco
@@ -188,41 +200,23 @@ namespace SistemaLoja01.Page
             usuarios.login = "joao123";
             usuarios.senha = "joaoteste";
             pessoa.nome = "Joao";
-            pessoa.cpf = Convert.ToInt64("10101010");
-            pessoa.contato = Convert.ToInt64("11987654321");
+            pessoa.cpf = "10101010";
+            pessoa.contato = "11987654321";
             pessoa.email = "joao@hotmail.com";
             pessoa.status = Convert.ToBoolean(Convert.ToInt32(1));
             pessoa.tipousuario = 1;
             usuarios.pessoa = pessoa;
 
-            divCadastro.Visible = true;
-
             txtlogin.Value = usuarios.login;
             txtsenha.Disabled = true;
             txtnome.Value = usuarios.pessoa.nome;
-            txtcpf.Value = usuarios.pessoa.cpf.ToString();
-            txtcontato.Value = usuarios.pessoa.contato.ToString();
+            txtcpf.Value = usuarios.pessoa.cpf;
+            txtcontato.Value = usuarios.pessoa.contato;
             txtemail.Value = usuarios.pessoa.email;
             ddlCtipousuario.SelectedIndex = usuarios.pessoa.tipousuario;
-
-            btnradio1.Checked = true; // inativo
-            btnradio2.Checked = true; // ativo
+            flexSwitchCheckDefault.Checked = true;
 
             btncadastro.Text = "Alterar";
-
-            //usuarios.tipousuario = 1;
-
-            //TableBusca.Visible = false;
-            //TableCadastro.Visible = false;
-            //TableAlterar.Visible = true;
-            //GridRegistros.Visible = false;
-
-            //txtANome.Text = pessoa.nome;
-            //txtACPF.Text = pessoa.cpf.ToString();
-            //txtAContato.Text = pessoa.contato.ToString();
-            //txtAEmail.Text = pessoa.email;
-            //rblAStatus.SelectedIndex = Convert.ToInt32(pessoa.status);
-            //ddlATipoUsuario.SelectedIndex = usuarios.tipousuario;
         }
     }
 }

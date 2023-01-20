@@ -15,6 +15,42 @@ namespace SistemaLoja01.Page
     {
 
         /// <summary>
+        /// Controle msgCadastroSucesso.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl msgCadastroSucesso;
+
+        /// <summary>
+        /// Controle txtsucesso.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtsucesso;
+
+        /// <summary>
+        /// Controle msgCadastroErro.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl msgCadastroErro;
+
+        /// <summary>
+        /// Controle txterro.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txterro;
+
+        /// <summary>
         /// Controle divBuscar.
         /// </summary>
         /// <remarks>
@@ -49,6 +85,15 @@ namespace SistemaLoja01.Page
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divRegistros;
+
+        /// <summary>
+        /// Controle txtBuscaNome.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtBuscaNome;
 
         /// <summary>
         /// Controle GridViewUsuarios.
@@ -132,22 +177,13 @@ namespace SistemaLoja01.Page
         protected global::System.Web.UI.WebControls.DropDownList ddlCtipousuario;
 
         /// <summary>
-        /// Controle btnradio1.
+        /// Controle flexSwitchCheckDefault.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton btnradio1;
-
-        /// <summary>
-        /// Controle btnradio2.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton btnradio2;
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox flexSwitchCheckDefault;
 
         /// <summary>
         /// Controle btncadastro.
