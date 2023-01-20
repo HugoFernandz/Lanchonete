@@ -11,169 +11,151 @@ namespace SistemaLoja01.Page
 {
 
 
-    public partial class Pessoas
+    public partial class Clientes
     {
 
         /// <summary>
-        /// Controle TableBusca.
+        /// Controle msgCadastroSucesso.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table TableBusca;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl msgCadastroSucesso;
 
         /// <summary>
-        /// Controle txtBNome.
+        /// Controle txtsucesso.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBNome;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txtsucesso;
 
         /// <summary>
-        /// Controle ddlBTipoCadastro.
+        /// Controle msgCadastroErro.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlBTipoCadastro;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl msgCadastroErro;
 
         /// <summary>
-        /// Controle TableCadastro.
+        /// Controle txterro.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table TableCadastro;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl txterro;
 
         /// <summary>
-        /// Controle txtNome.
+        /// Controle divBuscar.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNome;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divBuscar;
 
         /// <summary>
-        /// Controle TxtCPF.
+        /// Controle BuscarNome.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtCPF;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText BuscarNome;
 
         /// <summary>
-        /// Controle txtContato.
+        /// Controle divRegistros.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtContato;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divRegistros;
 
         /// <summary>
-        /// Controle txtEmail.
+        /// Controle txtBuscaNome.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEmail;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtBuscaNome;
 
         /// <summary>
-        /// Controle ddlTipoCadastro.
+        /// Controle GridViewUsuarios.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlTipoCadastro;
+        protected global::System.Web.UI.WebControls.GridView GridViewUsuarios;
 
         /// <summary>
-        /// Controle TableAlterar.
+        /// Controle divCadastro.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table TableAlterar;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divCadastro;
 
         /// <summary>
-        /// Controle txtANome.
+        /// Controle txtnome.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtANome;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtnome;
 
         /// <summary>
-        /// Controle txtACPF.
+        /// Controle txtcpf.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtACPF;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtcpf;
 
         /// <summary>
-        /// Controle txtAContato.
+        /// Controle txtcontato.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAContato;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtcontato;
 
         /// <summary>
-        /// Controle txtAEmail.
+        /// Controle txtemail.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAEmail;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtemail;
 
         /// <summary>
-        /// Controle ddlATipoCadastro.
+        /// Controle flexSwitchCheckDefault.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlATipoCadastro;
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox flexSwitchCheckDefault;
 
         /// <summary>
-        /// Controle rblAStatus.
+        /// Controle btncadastro.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rblAStatus;
-
-        /// <summary>
-        /// Controle GridRegistros.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Table GridRegistros;
-
-        /// <summary>
-        /// Controle GridViewPessoas.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridViewPessoas;
+        protected global::System.Web.UI.WebControls.Button btncadastro;
     }
 }

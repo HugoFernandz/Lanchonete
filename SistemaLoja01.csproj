@@ -79,7 +79,7 @@
     <Content Include="Images\verifica.png" />
     <Content Include="Page\Financeiro.aspx" />
     <Content Include="Page\Historico.aspx" />
-    <Content Include="Page\Pessoas.aspx" />
+    <Content Include="Page\Clientes.aspx" />
     <Content Include="Page\Produtos.aspx" />
     <Content Include="Page\Servicos.aspx" />
     <Content Include="Page\Usuarios.aspx" />
@@ -124,12 +124,12 @@
     <Compile Include="Page\Historico.aspx.designer.cs">
       <DependentUpon>Historico.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Page\Pessoas.aspx.cs">
-      <DependentUpon>Pessoas.aspx</DependentUpon>
+    <Compile Include="Page\Clientes.aspx.cs">
+      <DependentUpon>Clientes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Page\Pessoas.aspx.designer.cs">
-      <DependentUpon>Pessoas.aspx</DependentUpon>
+    <Compile Include="Page\Clientes.aspx.designer.cs">
+      <DependentUpon>Clientes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Page\Produtos.aspx.cs">
       <DependentUpon>Produtos.aspx</DependentUpon>
