@@ -8,7 +8,6 @@ namespace SistemaLoja01.Entity
     public enum eTipoDrop
     {
         TipoUsuario = 1,
-        TipoCadastro = 2,
-        TipoProduto = 3
+        TipoProduto = 2
     }
 }

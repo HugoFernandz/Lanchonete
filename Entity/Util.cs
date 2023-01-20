@@ -17,12 +17,7 @@ namespace SistemaLoja01.Entity
                     NomeDropDown.DataBind();
                     NomeDropDown.Items.Insert(0, " Selecione ");
                     break;
-                //case 2:
-                //    NomeDropDown.DataSource = Enum.GetNames(typeof(eTipoCadastro));
-                //    NomeDropDown.DataBind();
-                //    NomeDropDown.Items.Insert(0, " Selecione ");
-                //    break;
-                case 3:
+                case 2:
                     NomeDropDown.DataSource = Enum.GetNames(typeof(eTipoProduto));
                     NomeDropDown.DataBind();
                     NomeDropDown.Items.Insert(0, " Selecione ");

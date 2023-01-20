@@ -66,6 +66,7 @@ namespace SistemaLoja01.Page
 
             string nomeusuario = txtBuscaNome.Value;
 
+
             // buscar banco
 
             DataTable data = new DataTable();
