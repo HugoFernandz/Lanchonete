@@ -76,7 +76,9 @@
     <Content Include="Images\MarcaDagua.png" />
     <Content Include="Images\procurar.png" />
     <Content Include="Images\quadra.png" />
+    <Content Include="Images\user.png" />
     <Content Include="Images\verifica.png" />
+    <Content Include="Login.aspx" />
     <Content Include="Page\Financeiro.aspx" />
     <Content Include="Page\Historico.aspx" />
     <Content Include="Page\Clientes.aspx" />
@@ -93,6 +95,9 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Entity\BLL\LoginBLL.cs" />
+    <Compile Include="Entity\Conexao.cs" />
+    <Compile Include="Entity\DAL\LoginDAL.cs" />
     <Compile Include="Entity\Enum\eAcaoTabela.cs" />
     <Compile Include="Entity\Enum\eFormaPagamento.cs" />
     <Compile Include="Entity\Enum\eTipoProduto.cs" />
@@ -109,6 +114,13 @@
     </Compile>
     <Compile Include="Erro.aspx.designer.cs">
       <DependentUpon>Erro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Page\Financeiro.aspx.cs">
       <DependentUpon>Financeiro.aspx</DependentUpon>

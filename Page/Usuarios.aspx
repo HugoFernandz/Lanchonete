@@ -38,7 +38,7 @@
             </div>
             <div class="col-md-auto">
                 <div class="form-group">
-                    <asp:Button type="submit" class="btn btn-primary" runat="server" Text="Novo Cadastro" OnClick="NovoCadastro_Click" />
+                    <button type="submit" class="btn btn-primary" runat="server" Text="Novo Cadastro" OnClick="NovoCadastro_Click" />
                 </div>
             </div>
         </div>
