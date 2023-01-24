@@ -12,5 +12,6 @@ namespace SistemaLoja01.Entity
         public int quantidade { get; set; }
         public int tipoproduto { get; set; }
         public bool status { get; set; }
+        public int idproduto { get; set; }
     }
 }

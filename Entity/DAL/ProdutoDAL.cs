@@ -7,20 +7,23 @@ using System.Web;
 
 namespace SistemaLoja01.Entity.DAL
 {
-    public class LoginDAL
+    public class ProdutoDAL
     {
-
-        public int Cadastro_C_Login(Usuario user)
+        public int Cadastro_C_Produto(Produto user)
         {
             Conexao conexao = new Conexao();
+
             try
             {
                 SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = "dbo.SP_I_Login"; // ALTERAR PROCEDURE
+                cmd.CommandText = "dbo.SP_I_Produto"; // ALTERAR PROCEDURE
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.Add("@login", SqlDbType.VarChar).Value = user.login;
-                cmd.Parameters.Add("@senha", SqlDbType.VarChar).Value = user.senha;
+                cmd.Parameters.Add("@nome", SqlDbType.VarChar).Value = user.nome;
+                cmd.Parameters.Add("@preco", SqlDbType.VarChar).Value = user.preco;
+                cmd.Parameters.Add("@quantidade", SqlDbType.VarChar).Value = user.quantidade;
+                cmd.Parameters.Add("@status", SqlDbType.VarChar).Value = user.status;
+                cmd.Parameters.Add("@tipoproduto", SqlDbType.VarChar).Value = user.tipoproduto;
 
                 cmd.Connection = conexao.Conectar();
 
@@ -43,7 +46,7 @@ namespace SistemaLoja01.Entity.DAL
                 conexao.Desconectar();
             }
         }
-        public DataSet Cadastro_R_Login(Usuario user)
+        public DataSet Cadastro_R_Produto(Produto user)
         {
             Conexao conexao = new Conexao();
             try
@@ -51,11 +54,11 @@ namespace SistemaLoja01.Entity.DAL
                 DataSet ds = new DataSet();
                 SqlCommand cmd = new SqlCommand();
 
-                cmd.CommandText = "dbo.SP_I_Login";
+                cmd.CommandText = "dbo.SP_I_Produto";
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.Add("@login", SqlDbType.VarChar).Value = user.login;
-                cmd.Parameters.Add("@senha", SqlDbType.VarChar).Value = user.senha;
+                cmd.Parameters.Add("@nome", SqlDbType.VarChar).Value = user.nome;
+                cmd.Parameters.Add("@tipoproduto", SqlDbType.VarChar).Value = user.tipoproduto;
 
                 cmd.Connection = conexao.Conectar();
                 cmd.ExecuteNonQuery();
@@ -75,7 +78,7 @@ namespace SistemaLoja01.Entity.DAL
                 throw new Exception(ex.Message);
             }
         }
-        public DataSet Cadastro_U_Login(Usuario user)
+        public DataSet Cadastro_U_Produto(Produto user)
         {
             Conexao conexao = new Conexao();
             try
@@ -83,11 +86,14 @@ namespace SistemaLoja01.Entity.DAL
                 DataSet ds = new DataSet();
                 SqlCommand cmd = new SqlCommand();
 
-                cmd.CommandText = "dbo.SP_I_Login";
+                cmd.CommandText = "dbo.SP_I_Produto";
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.Add("@login", SqlDbType.VarChar).Value = user.login;
-                cmd.Parameters.Add("@senha", SqlDbType.VarChar).Value = user.senha;
+                cmd.Parameters.Add("@nome", SqlDbType.VarChar).Value = user.nome;
+                cmd.Parameters.Add("@preco", SqlDbType.VarChar).Value = user.preco;
+                cmd.Parameters.Add("@quantidade", SqlDbType.VarChar).Value = user.quantidade;
+                cmd.Parameters.Add("@status", SqlDbType.VarChar).Value = user.status;
+                cmd.Parameters.Add("@tipoproduto", SqlDbType.VarChar).Value = user.tipoproduto;
 
                 cmd.Connection = conexao.Conectar();
                 cmd.ExecuteNonQuery();
@@ -107,7 +113,7 @@ namespace SistemaLoja01.Entity.DAL
                 throw new Exception(ex.Message);
             }
         }
-        public DataSet Cadastro_D_Login(Usuario user)
+        public DataSet Cadastro_D_Produto(Produto user)
         {
             Conexao conexao = new Conexao();
             try
@@ -115,11 +121,10 @@ namespace SistemaLoja01.Entity.DAL
                 DataSet ds = new DataSet();
                 SqlCommand cmd = new SqlCommand();
 
-                cmd.CommandText = "dbo.SP_I_Login";
+                cmd.CommandText = "dbo.SP_I_Produto";
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.Add("@login", SqlDbType.VarChar).Value = user.login;
-                cmd.Parameters.Add("@senha", SqlDbType.VarChar).Value = user.senha;
+                cmd.Parameters.Add("@idproduto", SqlDbType.VarChar).Value = user.idproduto;
 
                 cmd.Connection = conexao.Conectar();
                 cmd.ExecuteNonQuery();

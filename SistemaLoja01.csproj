@@ -95,8 +95,14 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Entity\BLL\ProdutoBLL.cs" />
+    <Compile Include="Entity\BLL\ClienteBLL.cs" />
+    <Compile Include="Entity\BLL\UsuarioBLL.cs" />
     <Compile Include="Entity\BLL\LoginBLL.cs" />
     <Compile Include="Entity\Conexao.cs" />
+    <Compile Include="Entity\DAL\ProdutoDAL.cs" />
+    <Compile Include="Entity\DAL\ClienteDAL.cs" />
+    <Compile Include="Entity\DAL\UsuarioDAL.cs" />
     <Compile Include="Entity\DAL\LoginDAL.cs" />
     <Compile Include="Entity\Enum\eAcaoTabela.cs" />
     <Compile Include="Entity\Enum\eFormaPagamento.cs" />

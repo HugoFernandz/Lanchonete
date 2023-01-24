@@ -13,6 +13,7 @@ namespace SistemaLoja01.Entity
         public string email { get; set; }
         public int tipousuario { get; set; }
         public bool status { get; set; }
+        public int idpessoa { get; set; }
 
     }
 }
