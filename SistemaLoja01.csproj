@@ -71,6 +71,7 @@
     <Content Include="Default.aspx" />
     <Content Include="Erro.aspx" />
     <Content Include="Images\adicionar.png" />
+    <Content Include="Images\IconeLanchonete_Erro.png" />
     <Content Include="Images\Icone_Lanchonete.png" />
     <Content Include="Images\Icone_LanchoneteMarcadAgua.png" />
     <Content Include="Images\lapis.png" />

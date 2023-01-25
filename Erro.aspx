@@ -8,11 +8,10 @@
     <title>Erro</title>
 </head>
 <body>
-    <form id="form1" runat="server">
-        <div style="background-color:darkkhaki">
-            <h1 style="text-align:center; margin-top:200px">ERRO</h1>
-            <h3 style="text-align:center;">Entre em Contato com o Braian</h3>
-        </div>
+    <form id="form1" runat="server" style="text-align:center">
+        <h1>Erro</h1>
+        <h3>Entre em Contato com o Suporte !</h3>
+        <asp:Image  runat="server" ImageUrl="~/Images/IconeLanchonete_Erro.png"/>
     </form>
 </body>
 </html>
