@@ -36,10 +36,9 @@
                         <a class="nav-link" href="../Page/Financeiro.aspx">Financeiro</a>
                     </li>
                 </ul>
-<%--                <form class="d-flex" style="background-color:azure">
-                    <asp:Image runat="server" ID="imagemuser" ImageUrl="~/Images/user.png" Width="50px" Height="50px"/>
-                    <label runat="server" id="nomeuser">Nome usuario</label>
-                </form>--%>
+                <form class="d-flex">
+                    <a href="Login.aspx"><asp:Image runat="server" ImageUrl="~/Images/logout.png"/></a>
+                </form>
             </div>
         </div>
     </nav>

@@ -71,14 +71,13 @@
     <Content Include="Default.aspx" />
     <Content Include="Erro.aspx" />
     <Content Include="Images\adicionar.png" />
-    <Content Include="Images\edit-icon.png" />
-    <Content Include="Images\Icone.png" />
+    <Content Include="Images\Icone_Lanchonete.png" />
+    <Content Include="Images\Icone_LanchoneteMarcadAgua.png" />
     <Content Include="Images\lapis.png" />
-    <Content Include="Images\MarcaDagua.png" />
+    <Content Include="Images\logout.png" />
     <Content Include="Images\procurar.png" />
     <Content Include="Images\quadra.png" />
     <Content Include="Images\sinal-de-menos.png" />
-    <Content Include="Images\user.png" />
     <Content Include="Images\verifica.png" />
     <Content Include="Login.aspx" />
     <Content Include="Page\Financeiro.aspx" />

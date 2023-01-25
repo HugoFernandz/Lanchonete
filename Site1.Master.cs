@@ -13,5 +13,10 @@ namespace SistemaLoja01
         {
 
         }
+
+        protected void btnSair_Click(object sender, EventArgs e)
+        {
+            Server.Transfer("Login.aspx");
+        }
     }
 }
