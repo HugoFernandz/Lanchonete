@@ -12,27 +12,30 @@ namespace SistemaLoja01
 {
     public partial class Login : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
-        {
-
-        }
-
+        protected void Page_Load(object sender, EventArgs e) { }
         protected void btnlogin_Click(object sender, EventArgs e)
         {
             Usuario user = new Usuario();
             user.login = txtlogin.Value;
             user.senha = txtsenha.Value;
 
-            //LoginBLL consulta = new LoginBLL(); 
-            //DataSet registro = consulta.Read(user);
+            UsuarioBLL consulta = new UsuarioBLL();
+            DataSet registro = consulta.ReadLogin(user);
 
-            //if (registro.Tables.Count > 0)
-            //{
-            
-            Session["frmLogin"] = "testelogin";
-            Response.Redirect("Default.aspx?t=10");
+            if (registro.Tables[0].Rows.Count > 0)
+            {
+                msgCadastroErro.Visible = false;
+                txterro.Visible = false;
 
-            //}
+                Session["CriptoLogin"] = "PAxakBVXAo8="; // Criptografia para Validar log-in
+                Response.Redirect("Default.aspx");
+            }
+            else
+            {
+                msgCadastroErro.Visible = true;
+                txterro.Visible = true;
+                txterro.InnerText = "Login Incorreto ! ";
+            }
         }
     }
 }

@@ -12,14 +12,21 @@ namespace SistemaLoja01.Page
     {
         //Session["frmUsuarios"] = 0;
         protected void Page_Load(object sender, EventArgs e)
-        {
-            if (!Page.IsPostBack)
+        {            
+            if (Session["CriptoLogin"] != null)
             {
-                Util util = new Util();
-                util.ListaDropdown(ddlBTipoUsuario, ((int)eTipoDrop.TipoUsuario));
-                util.ListaDropdown(ddlCtipousuario, ((int)eTipoDrop.TipoUsuario));
+                if (!Page.IsPostBack)
+                {
+                    Util util = new Util();
+                    util.ListaDropdown(ddlBTipoUsuario, ((int)eTipoDrop.TipoUsuario));
+                    util.ListaDropdown(ddlCtipousuario, ((int)eTipoDrop.TipoUsuario));
 
-                divBuscar.Visible = true;
+                    divBuscar.Visible = true;
+                }
+            }
+            else
+            {
+                Response.Redirect("Login.aspx");
             }
         }
         protected void Busca_Click(object sender, EventArgs e)

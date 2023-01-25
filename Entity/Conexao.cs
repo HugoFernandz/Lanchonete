@@ -13,7 +13,7 @@ namespace SistemaLoja01.Entity
         {
             get
             {
-                var conexao = "Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Projeto01;Data Source=DESKTOP-5ACM8V6"; // BUSCAR NOVO LINK
+                var conexao = "Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=Lanchonete;Data Source=SUPORTE-01\\SQLEXPRESS";
                 return conexao;
             }
         }

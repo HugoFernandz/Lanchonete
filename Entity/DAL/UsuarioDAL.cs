@@ -152,5 +152,37 @@ namespace SistemaLoja01.Entity.DAL
                 throw new Exception(ex.Message);
             }
         }
+        public DataSet Cadastro_R_Login(Usuario user)
+        {
+            Conexao conexao = new Conexao();
+            try
+            {
+                DataSet ds = new DataSet();
+                SqlCommand cmd = new SqlCommand();
+
+                cmd.CommandText = "dbo.Read_Login";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.Add("@login", SqlDbType.VarChar).Value = user.login;
+                cmd.Parameters.Add("@senha", SqlDbType.VarChar).Value = user.senha;
+
+                cmd.Connection = conexao.Conectar();
+                cmd.ExecuteNonQuery();
+
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+                da.Fill(ds);
+
+                return ds;
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

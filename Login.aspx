@@ -9,11 +9,19 @@
     <title></title>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="form1" runat="server" style="background-image: linear-gradient(orange, white)">
+
+        <div class="alert alert-dismissible alert-warning" runat="server" visible="false" id="msgCadastroErro" style="text-align:center">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <strong>
+                <label runat="server" id="txterro" visible="false"></label>
+            </strong>
+            Revise as informações e tente novamente.
+        </div>
 
         <div style="width: fit-content; padding: 200px" class="container-fluid">
             <div class="card border-secondary mb-3" style="max-width: 20rem;">
-                <div class="card-header">LOGIN</div>
+                <div class="card-header" style="text-align:center">LOGIN</div>
                 <div class="card-body">
                     <div class="form-group">
                         <label class="form-label mt-4">Usuário: </label>
@@ -23,9 +31,9 @@
                         <label class="form-label mt-4">Senha: </label>
                         <input type="password" class="form-control" id="txtsenha" placeholder="Senha Usuário" runat="server" />
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" style="text-align:center">
                         <br />
-                        <asp:Button runat="server" ID="Button1" Text="Entrar" OnClick="btnlogin_Click" />
+                        <asp:Button runat="server" ID="Button1" Text="Entrar" OnClick="btnlogin_Click" CssClass="btn btn-primary" />
                     </div>
                 </div>
             </div>

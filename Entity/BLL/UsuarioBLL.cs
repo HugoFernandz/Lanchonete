@@ -61,5 +61,17 @@ namespace SistemaLoja01.Entity.BLL
                 throw new Exception(ex.Message);
             }
         }
+        public DataSet ReadLogin(Usuario user)
+        {
+            try
+            {
+                DataSet consult = usuario.Cadastro_R_Login(user);
+                return consult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }
