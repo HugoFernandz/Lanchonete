@@ -1,4 +1,5 @@
 ﻿using SistemaLoja01.Entity;
+using SistemaLoja01.Entity.BLL;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,9 +12,10 @@ namespace SistemaLoja01.Page
 {
     public partial class Produtos : System.Web.UI.Page
     {
-        //Session["frmProdutos"] = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
+            //if (Session["CriptoLogin"] != null)
+            //{
             if (!Page.IsPostBack)
             {
                 Util util = new Util();
@@ -22,76 +24,72 @@ namespace SistemaLoja01.Page
 
                 divBuscar.Visible = true;
             }
+            //}
+            //else
+            //{
+            //    Response.Redirect("Login.aspx");
+            //}
         }
         protected void Busca_Click(object sender, EventArgs e)
         {
-            msgCadastroSucesso.Visible = false;
-            msgCadastroErro.Visible = false;
-            divBuscar.Visible = false;
-            divRegistros.Visible = true;
-            divCadastro.Visible = false;
+            if (!string.IsNullOrEmpty(BuscarNome.Value) || ddlBTipoProduto.SelectedIndex > 0)
+            {
+                Produto prod = new Produto();
+                prod.nome = BuscarNome.Value;
+                prod.tipoproduto = ddlBTipoProduto.SelectedIndex;
 
-            string nomeusuario = BuscarProduto.Value;
-            int indiceusuario = ddlBTipoProduto.SelectedIndex;
+                ProdutoBLL consulta = new ProdutoBLL();
+                DataSet registro = consulta.Read(prod);
 
-            // buscar banco
+                Limpa_Campos();
+                msgCadastroSucesso.Visible = false;
+                msgCadastroErro.Visible = false;
+                divBuscar.Visible = false;
+                divRegistros.Visible = true;
+                divCadastro.Visible = false;
 
-
-            DataTable data = new DataTable();
-
-            data.Columns.Add("IdProduto");
-            data.Columns.Add("TipoProduto");
-            data.Columns.Add("Nome");
-            data.Columns.Add("Preco");
-            data.Columns.Add("quantidade");
-            data.Columns.Add("Status");
-
-            data.Rows.Add("1", "Bebidas", "Itaipava Lata 360ml", "3,00", "11", "Ativo");
-            data.Rows.Add("2", "Bebidas", "Skol Lata 360ml", "3,50", "10", "Ativo");
-            data.Rows.Add("3", "Lanches", "X-Tudo", "20,00", "15", "Ativo");
-
-
-            GridViewProdutos.EditIndex = -1; // REMOVER CAMPOS EDITADOS
-            GridViewProdutos.DataSource = data;
-            GridViewProdutos.DataBind();
-
-            Limpa_Campos();
+                GridViewProdutos.EditIndex = -1;
+                GridViewProdutos.DataSource = registro;
+                GridViewProdutos.DataBind();
+            }
+            else
+            {
+                msgCadastroErro.Visible = true;
+                txterro.Visible = true;
+                txterro.InnerText = "Obrigatório parametro para consulta !";
+            }
         }
         protected void BuscaNome_Click(object sender, EventArgs e)
         {
-            msgCadastroSucesso.Visible = false;
-            msgCadastroErro.Visible = false;
-            divBuscar.Visible = false;
-            divRegistros.Visible = true;
-            divCadastro.Visible = false;
+            if (!string.IsNullOrEmpty(txtBuscaNome.Value))
+            {
+                Produto prod = new Produto();
+                prod.nome = txtBuscaNome.Value;
+                prod.tipoproduto = 0;
 
-            string nomeproduto = txtBuscaNome.Value;
+                ProdutoBLL consulta = new ProdutoBLL();
+                DataSet registro = consulta.Read(prod);
 
-            // buscar banco
+                Limpa_Campos();
+                msgCadastroSucesso.Visible = false;
+                msgCadastroErro.Visible = false;
+                divBuscar.Visible = false;
+                divRegistros.Visible = true;
+                divCadastro.Visible = false;
 
-            DataTable data = new DataTable();
-
-            data.Columns.Add("IdProduto");
-            data.Columns.Add("TipoProduto");
-            data.Columns.Add("Nome");
-            data.Columns.Add("Preco");
-            data.Columns.Add("quantidade");
-            data.Columns.Add("Status");
-
-            data.Rows.Add("1", "Bebidas", "Itaipava Lata 360ml", "3,00", "11", "Ativo");
-            data.Rows.Add("2", "Bebidas", "Skol Lata 360ml", "3,50", "10", "Ativo");
-            data.Rows.Add("3", "Lanches", "X-Tudo", "20,00", "15", "Ativo");
-
-            data.Clear();
-
-            GridViewProdutos.DataSource = data;
-            GridViewProdutos.DataBind();
-
-            Limpa_Campos();
+                GridViewProdutos.EditIndex = -1;
+                GridViewProdutos.DataSource = registro;
+                GridViewProdutos.DataBind();
+            }
+            else
+            {
+                msgCadastroErro.Visible = true;
+                txterro.Visible = true;
+                txterro.InnerText = "Obrigatório parametro para consulta !";
+            }
         }
         protected void NovoCadastro_Click(object sender, EventArgs e)
         {
-
             Limpa_Campos();
 
             msgCadastroSucesso.Visible = false;
@@ -103,6 +101,7 @@ namespace SistemaLoja01.Page
         }
         protected void Cadastro_Click(object sender, EventArgs e)
         {
+            int status = 0;
             Produto produto = new Produto();
 
             if (btncadastro.Text == "Salvar")
@@ -112,25 +111,38 @@ namespace SistemaLoja01.Page
                 produto.quantidade = Convert.ToInt32(txtquantidade.Value);
                 produto.tipoproduto = ddlCTipoProduto.SelectedIndex;
                 produto.status = flexSwitchCheckDefault.Checked;
+
+                ProdutoBLL consulta = new ProdutoBLL();
+                status = consulta.Create(produto);
+
             }
             else if (btncadastro.Text == "Alterar")
             {
+                produto.idproduto = Convert.ToInt32(Session["IdUserAlterar"]);
                 produto.nome = txtnome.Value;
                 produto.preco = Convert.ToDouble(txtpreco.Value);
                 produto.quantidade = Convert.ToInt32(txtquantidade.Value);
                 produto.tipoproduto = ddlCTipoProduto.SelectedIndex;
                 produto.status = flexSwitchCheckDefault.Checked;
+
+                ProdutoBLL consulta = new ProdutoBLL();
+                status = consulta.Update(produto);
             }
 
-            //msgCadastroSucesso.Visible = true;
-            //txtsucesso.Visible = true;
-            //txtsucesso.InnerText = "Produto Cadastrado com sucesso !!!";
-            //msgCadastroErro.Visible = false;
-
-            //msgCadastroErro.Visible = true;
-            //txterro.Visible = true;
-            //txterro.InnerText = "Erro ao Cadastrar Produto ! ";
-            //msgCadastroSucesso.Visible = false;
+            if (status == 1)
+            {
+                msgCadastroSucesso.Visible = true;
+                txtsucesso.Visible = true;
+                txtsucesso.InnerText = "Salvo com sucesso ! ";
+                msgCadastroErro.Visible = false;
+            }
+            else
+            {
+                msgCadastroErro.Visible = true;
+                txterro.Visible = true;
+                txterro.InnerText = "Erro ao salvar Usuário ! ";
+                msgCadastroSucesso.Visible = false;
+            }
 
             Limpa_Campos();
         }
@@ -150,7 +162,7 @@ namespace SistemaLoja01.Page
         {
             if (divBuscar.Visible)
             {
-                BuscarProduto.Value = string.Empty;
+                BuscarNome.Value = string.Empty;
                 ddlBTipoProduto.SelectedIndex = 0;
             }
             if (divCadastro.Visible)
@@ -165,34 +177,55 @@ namespace SistemaLoja01.Page
             {
                 txtBuscaNome.Value = string.Empty;
             }
+
+            if (Session["IdUserAlterar"] != null) Session["IdUserAlterar"] = null;
         }
         protected void GridViewProdutos_RowEditing(object sender, GridViewEditEventArgs e)
         {
+            Limpa_Campos();
             msgCadastroSucesso.Visible = false;
             msgCadastroErro.Visible = false;
             divBuscar.Visible = false;
             divRegistros.Visible = false;
             divCadastro.Visible = true;
 
-            //int iduser = int.Parse(GridViewUsuarios.DataKeys[e.NewEditIndex].Value.ToString());
+            Produto produt = new Produto();
+            produt.idproduto = int.Parse(GridViewProdutos.DataKeys[e.NewEditIndex].Value.ToString());
 
-            // buscar dados do usuario no banco
+            ProdutoBLL consulta = new ProdutoBLL();
+            produt = consulta.Read_ID(produt);
 
-            Produto produto = new Produto();
-
-            produto.nome = "Itaipava Lata 360ml";
-            produto.preco = 3.00;
-            produto.quantidade = 10;
-            produto.status = Convert.ToBoolean(Convert.ToInt32(1));
-            produto.tipoproduto = 1;
-
-            txtnome.Value = produto.nome;
-            txtpreco.Value = produto.preco.ToString();
-            txtquantidade.Value = produto.quantidade.ToString();
-            ddlCTipoProduto.SelectedIndex = produto.tipoproduto;
-            flexSwitchCheckDefault.Checked = produto.status;
+            txtnome.Value = produt.nome;
+            txtpreco.Value = produt.preco.ToString();
+            txtquantidade.Value = produt.quantidade.ToString();
+            ddlCTipoProduto.SelectedIndex = produt.tipoproduto;
+            flexSwitchCheckDefault.Checked = produt.status;
 
             btncadastro.Text = "Alterar";
+            Session["IdUserAlterar"] = int.Parse(GridViewProdutos.DataKeys[e.NewEditIndex].Value.ToString());
+        }
+        protected void GridViewProdutos_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                #region Imagem Status
+                bool status = Convert.ToBoolean(((Label)e.Row.FindControl("lblStatus")).Text);
+                if (status)
+                {
+                    ((Image)e.Row.FindControl("imgStatus")).ImageUrl = "~/Images/desbloqueado.png";
+                }
+                else
+                {
+                    ((Image)e.Row.FindControl("imgStatus")).ImageUrl = "~/Images/bloqueado.png";
+                }
+                #endregion
+
+                #region Tipo Produto
+                int TipoProduto = Convert.ToInt32(((Label)e.Row.FindControl("lblTipoProduto")).Text);
+                eTipoProduto _tipoproduto = (eTipoProduto)TipoProduto;
+                ((Label)e.Row.FindControl("lblTipoProduto")).Text = _tipoproduto.ToString();
+                #endregion
+            }
         }
     }
 }

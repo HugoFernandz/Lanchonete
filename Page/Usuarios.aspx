@@ -3,7 +3,6 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="Content" runat="server">
     <div style="background-image: linear-gradient(#ffc7ab, #ffffff);">
 
-
         <br />
         <h1>Usuários</h1>
 
