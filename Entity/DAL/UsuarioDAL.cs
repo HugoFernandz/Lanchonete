@@ -121,37 +121,6 @@ namespace SistemaLoja01.Entity.DAL
                 conexao.Desconectar();
             }
         }
-        public DataSet Cadastro_D_Usuario(Usuario user)
-        {
-            Conexao conexao = new Conexao();
-            try
-            {
-                DataSet ds = new DataSet();
-                SqlCommand cmd = new SqlCommand();
-
-                cmd.CommandText = "dbo.SP_I_Usuario";
-                cmd.CommandType = CommandType.StoredProcedure;
-
-                cmd.Parameters.Add("@idusuario", SqlDbType.Int).Value = user.idusuario;
-
-                cmd.Connection = conexao.Conectar();
-                cmd.ExecuteNonQuery();
-
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-
-                da.Fill(ds);
-
-                return ds;
-            }
-            catch (SqlException ex)
-            {
-                throw new Exception(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
         public DataSet Cadastro_R_Login(Usuario user)
         {
             Conexao conexao = new Conexao();

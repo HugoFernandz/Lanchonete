@@ -9,22 +9,21 @@ namespace SistemaLoja01.Entity.DAL
 {
     public class ClienteDAL
     {
-        public int Cadastro_C_Clientes(Pessoa user)
+        public int Cadastro_C_Cliente(Pessoa user)
         {
             Conexao conexao = new Conexao();
 
             try
             {
                 SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = "dbo.SP_I_Clientes"; // ALTERAR PROCEDURE
+                cmd.CommandText = "dbo.Create_Cliente";
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.Parameters.Add("@nome", SqlDbType.VarChar).Value = user.nome;
-                cmd.Parameters.Add("@contato", SqlDbType.VarChar).Value = user.contato;
                 cmd.Parameters.Add("@cpf", SqlDbType.VarChar).Value = user.cpf;
+                cmd.Parameters.Add("@contato", SqlDbType.VarChar).Value = user.contato;
                 cmd.Parameters.Add("@email", SqlDbType.VarChar).Value = user.email;
-                cmd.Parameters.Add("@status", SqlDbType.VarChar).Value = user.status;
-                cmd.Parameters.Add("@tipousuario", SqlDbType.VarChar).Value = user.tipousuario;
+                cmd.Parameters.Add("@status", SqlDbType.Bit).Value = user.status;
 
                 cmd.Connection = conexao.Conectar();
 
@@ -47,7 +46,7 @@ namespace SistemaLoja01.Entity.DAL
                 conexao.Desconectar();
             }
         }
-        public DataSet Cadastro_R_Clientes(Pessoa user)
+        public DataSet Cadastro_R_Cliente(Pessoa user)
         {
             Conexao conexao = new Conexao();
             try
@@ -55,12 +54,10 @@ namespace SistemaLoja01.Entity.DAL
                 DataSet ds = new DataSet();
                 SqlCommand cmd = new SqlCommand();
 
-                cmd.CommandText = "dbo.SP_I_Clientes";
+                cmd.CommandText = "dbo.Read_Cliente";
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.Add("@nome", SqlDbType.VarChar).Value = user.nome;
-                cmd.Parameters.Add("@tipousuario", SqlDbType.VarChar).Value = user.tipousuario;
-
+                cmd.Parameters.Add("@nomecliente ", SqlDbType.VarChar).Value = user.nome;
                 cmd.Connection = conexao.Conectar();
                 cmd.ExecuteNonQuery();
 
@@ -79,43 +76,45 @@ namespace SistemaLoja01.Entity.DAL
                 throw new Exception(ex.Message);
             }
         }
-        public DataSet Cadastro_U_Clientes(Pessoa user)
+        public int Cadastro_U_Cliente(Pessoa user)
         {
             Conexao conexao = new Conexao();
+
             try
             {
-                DataSet ds = new DataSet();
                 SqlCommand cmd = new SqlCommand();
-
-                cmd.CommandText = "dbo.SP_I_Clientes";
+                cmd.CommandText = "dbo.Update_Cliente";
                 cmd.CommandType = CommandType.StoredProcedure;
 
+                cmd.Parameters.Add("@idcliente", SqlDbType.Int).Value = user.idpessoa;
                 cmd.Parameters.Add("@nome", SqlDbType.VarChar).Value = user.nome;
-                cmd.Parameters.Add("@contato", SqlDbType.VarChar).Value = user.contato;
                 cmd.Parameters.Add("@cpf", SqlDbType.VarChar).Value = user.cpf;
+                cmd.Parameters.Add("@contato", SqlDbType.VarChar).Value = user.contato;
                 cmd.Parameters.Add("@email", SqlDbType.VarChar).Value = user.email;
-                cmd.Parameters.Add("@status", SqlDbType.VarChar).Value = user.status;
-                cmd.Parameters.Add("@tipousuario", SqlDbType.VarChar).Value = user.tipousuario;
+                cmd.Parameters.Add("@status", SqlDbType.Bit).Value = user.status;
 
                 cmd.Connection = conexao.Conectar();
+
                 cmd.ExecuteNonQuery();
 
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                int idRetorno = 1;
 
-                da.Fill(ds);
-
-                return ds;
+                return idRetorno;
             }
-            catch (SqlException ex)
+            catch (SqlException sqlEx)
             {
-                throw new Exception(ex.Message);
+                throw new Exception("Erro ao incluir dados: " + sqlEx.Message);
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw new Exception("Erro ao acessar dados: " + ex.Message);
+            }
+            finally
+            {
+                conexao.Desconectar();
             }
         }
-        public DataSet Cadastro_D_Clientes(Pessoa user)
+        public DataSet Cadastro_R_IDCliente(Pessoa user)
         {
             Conexao conexao = new Conexao();
             try
@@ -123,7 +122,7 @@ namespace SistemaLoja01.Entity.DAL
                 DataSet ds = new DataSet();
                 SqlCommand cmd = new SqlCommand();
 
-                cmd.CommandText = "dbo.SP_I_Login";
+                cmd.CommandText = "dbo.Read_IDCliente";
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.Parameters.Add("@idcliente", SqlDbType.Int).Value = user.idpessoa;

@@ -1,4 +1,5 @@
 ﻿using SistemaLoja01.Entity;
+using SistemaLoja01.Entity.BLL;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,77 +12,78 @@ namespace SistemaLoja01.Page
 {
     public partial class Clientes : System.Web.UI.Page
     {
-        //Session["frmClientes"] = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
+            //if (Session["CriptoLogin"] != null)
+            //{
             if (!Page.IsPostBack)
             {
                 divBuscar.Visible = true;
             }
+            //}
+            //else
+            //{
+            //    Response.Redirect("Login.aspx");
+            //}
         }
         protected void Busca_Click(object sender, EventArgs e)
         {
-            msgCadastroSucesso.Visible = false;
-            msgCadastroErro.Visible = false;
-            divBuscar.Visible = false;
-            divRegistros.Visible = true;
-            divCadastro.Visible = false;
+            if (!string.IsNullOrEmpty(BuscarNome.Value))
+            {
+                Pessoa user = new Pessoa();
+                user.nome = BuscarNome.Value;
 
-            string nomeusuario = BuscarNome.Value;
+                ClienteBLL consulta = new ClienteBLL();
+                DataSet registro = consulta.Read(user);
 
-            // buscar banco
+                Limpa_Campos();
+                msgCadastroSucesso.Visible = false;
+                msgCadastroErro.Visible = false;
+                divBuscar.Visible = false;
+                divRegistros.Visible = true;
+                divCadastro.Visible = false;
 
-            DataTable data = new DataTable();
-
-            data.Columns.Add("IdCliente");
-            data.Columns.Add("Nome");
-            data.Columns.Add("CPF");
-            data.Columns.Add("Contato");
-            data.Columns.Add("Email");
-            data.Columns.Add("Status");
-            data.Rows.Add("1", "Joao", "10101010", "11987654321", "joao@hotmail.com", "Ativo");
-            data.Rows.Add("2", "Maria", "10101010", "11987654321", "maria@hotmail.com", "Ativo");
-            data.Rows.Add("3", "Antonio", "10101010", "11987654321", "antonio@hotmail.com", "Ativo");
-
-            GridViewClientes.EditIndex = -1; // REMOVER CAMPOS EDITADOS
-            GridViewClientes.DataSource = data;
-            GridViewClientes.DataBind();
-
-            Limpa_Campos();
+                GridViewClientes.EditIndex = -1;
+                GridViewClientes.DataSource = registro;
+                GridViewClientes.DataBind();
+            }
+            else
+            {
+                msgCadastroErro.Visible = true;
+                txterro.Visible = true;
+                txterro.InnerText = "Obrigatório parametro para consulta !";
+            }
         }
         protected void BuscaNome_Click(object sender, EventArgs e)
         {
-            msgCadastroSucesso.Visible = false;
-            msgCadastroErro.Visible = false;
-            divBuscar.Visible = false;
-            divRegistros.Visible = true;
-            divCadastro.Visible = false;
+            if (!string.IsNullOrEmpty(txtBuscaNome.Value))
+            {
+                Pessoa user = new Pessoa();
+                user.nome = txtBuscaNome.Value;
 
-            string nomeusuario = txtBuscaNome.Value;
+                ClienteBLL consulta = new ClienteBLL();
+                DataSet registro = consulta.Read(user);
 
-            // buscar banco
+                Limpa_Campos();
+                msgCadastroSucesso.Visible = false;
+                msgCadastroErro.Visible = false;
+                divBuscar.Visible = false;
+                divRegistros.Visible = true;
+                divCadastro.Visible = false;
 
-            DataTable data = new DataTable();
-            data.Columns.Add("IdCliente");
-            data.Columns.Add("Nome");
-            data.Columns.Add("CPF");
-            data.Columns.Add("Contato");
-            data.Columns.Add("Email");
-            data.Columns.Add("Status");
-            data.Rows.Add("1", "Joao", "10101010", "11987654321", "joao@hotmail.com", "Ativo");
-            data.Rows.Add("2", "Maria", "10101010", "11987654321", "maria@hotmail.com", "Ativo");
-            data.Rows.Add("3", "Antonio", "10101010", "11987654321", "antonio@hotmail.com", "Ativo");
-
-            data.Clear();
-
-            GridViewClientes.DataSource = data;
-            GridViewClientes.DataBind();
-
-            Limpa_Campos();
+                GridViewClientes.EditIndex = -1;
+                GridViewClientes.DataSource = registro;
+                GridViewClientes.DataBind();
+            }
+            else
+            {
+                msgCadastroErro.Visible = true;
+                txterro.Visible = true;
+                txterro.InnerText = "Obrigatório parametro para consulta !";
+            }
         }
         protected void NovoCadastro_Click(object sender, EventArgs e)
         {
-
             Limpa_Campos();
 
             msgCadastroSucesso.Visible = false;
@@ -93,34 +95,47 @@ namespace SistemaLoja01.Page
         }
         protected void Cadastro_Click(object sender, EventArgs e)
         {
-            Pessoa pessoa = new Pessoa();
+            Pessoa cliente = new Pessoa();
+            int status = 0;
 
             if (btncadastro.Text == "Salvar")
             {
-                pessoa.nome = txtnome.Value;
-                pessoa.cpf = txtcpf.Value;
-                pessoa.contato = txtcontato.Value;
-                pessoa.email = txtemail.Value;
-                pessoa.status = true;
+                cliente.nome = txtnome.Value;
+                cliente.cpf = txtcpf.Value;
+                cliente.contato = txtcontato.Value;
+                cliente.email = txtemail.Value;
+                cliente.status = flexSwitchCheckDefault.Checked;
+
+                ClienteBLL consulta = new ClienteBLL();
+                status = consulta.Create(cliente);
             }
             else if (btncadastro.Text == "Alterar")
             {
-                pessoa.nome = txtnome.Value;
-                pessoa.cpf = txtcpf.Value;
-                pessoa.contato = txtcontato.Value;
-                pessoa.email = txtemail.Value;
-                pessoa.status = true;
+                cliente.idpessoa = Convert.ToInt32(Session["IdUserAlterar"].ToString());
+                cliente.nome = txtnome.Value;
+                cliente.cpf = txtcpf.Value;
+                cliente.contato = txtcontato.Value;
+                cliente.email = txtemail.Value;
+                cliente.status = flexSwitchCheckDefault.Checked;
+
+                ClienteBLL consulta = new ClienteBLL();
+                status = consulta.Update(cliente);
             }
 
-            //msgCadastroSucesso.Visible = true;
-            //txtsucesso.Visible = true;
-            //txtsucesso.InnerText = "Cliente Cadastrado com sucesso !!!";
-            //msgCadastroErro.Visible = false;
-
-            //msgCadastroErro.Visible = true;
-            //txterro.Visible = true;
-            //txterro.InnerText = "Erro ao Cadastrar Cliente ! ";
-            //msgCadastroSucesso.Visible = false;
+            if (status == 1)
+            {
+                msgCadastroSucesso.Visible = true;
+                txtsucesso.Visible = true;
+                txtsucesso.InnerText = "Salvo com sucesso ! ";
+                msgCadastroErro.Visible = false;
+            }
+            else
+            {
+                msgCadastroErro.Visible = true;
+                txterro.Visible = true;
+                txterro.InnerText = "Erro ao salvar Cliente ! ";
+                msgCadastroSucesso.Visible = false;
+            }
 
             Limpa_Campos();
         }
@@ -154,34 +169,49 @@ namespace SistemaLoja01.Page
             {
                 txtBuscaNome.Value = string.Empty;
             }
+
+            if (Session["IdUserAlterar"] != null) Session["IdUserAlterar"] = null;
         }
         protected void GridViewClientes_RowEditing(object sender, GridViewEditEventArgs e)
         {
+            Limpa_Campos();
             msgCadastroSucesso.Visible = false;
             msgCadastroErro.Visible = false;
             divBuscar.Visible = false;
             divRegistros.Visible = false;
             divCadastro.Visible = true;
 
-            //int iduser = int.Parse(GridViewUsuarios.DataKeys[e.NewEditIndex].Value.ToString());
+            Pessoa user = new Pessoa();
+            user.idpessoa = int.Parse(GridViewClientes.DataKeys[e.NewEditIndex].Value.ToString());
 
-            // buscar dados do usuario no banco
+            ClienteBLL consulta = new ClienteBLL();
+            user = consulta.Read_ID(user);
 
-            Pessoa pessoa = new Pessoa();
-
-            pessoa.nome = "Joao";
-            pessoa.cpf = "10101010";
-            pessoa.contato = "11987654321";
-            pessoa.email = "joao@hotmail.com";
-            pessoa.status = Convert.ToBoolean(Convert.ToInt32(1));
-
-            txtnome.Value = pessoa.nome;
-            txtcpf.Value = pessoa.cpf;
-            txtcontato.Value = pessoa.contato;
-            txtemail.Value = pessoa.email;
+            txtnome.Value = user.nome;
+            txtcpf.Value = user.cpf;
+            txtcontato.Value = user.contato;
+            txtemail.Value = user.email;
             flexSwitchCheckDefault.Checked = true;
 
             btncadastro.Text = "Alterar";
+            Session["IdUserAlterar"] = int.Parse(GridViewClientes.DataKeys[e.NewEditIndex].Value.ToString());
+        }
+        protected void GridViewClientes_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                #region Imagem Status
+                bool status = Convert.ToBoolean(((Label)e.Row.FindControl("lblStatus")).Text);
+                if (status)
+                {
+                    ((Image)e.Row.FindControl("imgStatus")).ImageUrl = "~/Images/desbloqueado.png";
+                }
+                else
+                {
+                    ((Image)e.Row.FindControl("imgStatus")).ImageUrl = "~/Images/bloqueado.png";
+                }
+                #endregion
+            }
         }
     }
 }
