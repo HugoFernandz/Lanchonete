@@ -37,24 +37,14 @@ namespace SistemaLoja01.Entity.BLL
                 throw new Exception(ex.Message);
             }
         }
-        public DataSet Update (Usuario user)
+        public int Update (Usuario user)
         {
             try
             {
-                DataSet consult = usuario.Cadastro_U_Usuario(user);
-                return consult;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(ex.Message);
-            }
-        }
-        public DataSet Delete (Usuario user)
-        {
-            try
-            {
-                DataSet consult = usuario.Cadastro_D_Usuario(user);
-                return consult;
+                int value = usuario.Cadastro_U_Usuario(user);
+
+                if (value == 1) return 1;
+                else return 0;
             }
             catch (Exception ex)
             {
@@ -67,6 +57,31 @@ namespace SistemaLoja01.Entity.BLL
             {
                 DataSet consult = usuario.Cadastro_R_Login(user);
                 return consult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public Usuario Read_ID(Usuario user)
+        {
+            try
+            {
+                DataSet consult = usuario.Cadastro_R_IDUsuario(user);
+
+                Usuario dadosusuario = new Usuario();
+                dadosusuario.pessoa = new Pessoa();
+
+                dadosusuario.idusuario = Convert.ToInt32(consult.Tables[0].Rows[0]["IdUsuario"].ToString());
+                dadosusuario.login = consult.Tables[0].Rows[0]["Login"].ToString();
+                dadosusuario.pessoa.nome = consult.Tables[0].Rows[0]["Nome"].ToString();
+                dadosusuario.pessoa.cpf = consult.Tables[0].Rows[0]["CPF"].ToString();
+                dadosusuario.pessoa.contato = consult.Tables[0].Rows[0]["Contato"].ToString();
+                dadosusuario.pessoa.email = consult.Tables[0].Rows[0]["Email"].ToString();
+                dadosusuario.pessoa.tipousuario = Convert.ToInt32(consult.Tables[0].Rows[0]["TipoUsuario"].ToString());
+                dadosusuario.pessoa.status = Convert.ToBoolean(consult.Tables[0].Rows[0]["Status"].ToString());
+
+                return dadosusuario;
             }
             catch (Exception ex)
             {
