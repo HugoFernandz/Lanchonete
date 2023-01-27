@@ -79,8 +79,6 @@
     <Content Include="Images\logout.png" />
     <Content Include="Images\procurar.png" />
     <Content Include="Login.aspx" />
-    <Content Include="Page\Financeiro.aspx" />
-    <Content Include="Page\Historico.aspx" />
     <Content Include="Page\Clientes.aspx" />
     <Content Include="Page\Produtos.aspx" />
     <Content Include="Page\Servicos.aspx" />
@@ -104,11 +102,9 @@
     <Compile Include="Entity\DAL\ProdutoDAL.cs" />
     <Compile Include="Entity\DAL\ClienteDAL.cs" />
     <Compile Include="Entity\DAL\UsuarioDAL.cs" />
-    <Compile Include="Entity\Enum\eAcaoTabela.cs" />
     <Compile Include="Entity\Enum\eFormaPagamento.cs" />
     <Compile Include="Entity\Enum\eTipoProduto.cs" />
     <Compile Include="Entity\Enum\eTipoUsuario.cs" />
-    <Compile Include="Entity\Enum\eTabela.cs" />
     <Compile Include="Entity\Enum\eTipoDrop.cs" />
     <Compile Include="Entity\Pessoa.cs" />
     <Compile Include="Entity\Produto.cs" />
@@ -128,20 +124,6 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Page\Financeiro.aspx.cs">
-      <DependentUpon>Financeiro.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Page\Financeiro.aspx.designer.cs">
-      <DependentUpon>Financeiro.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Page\Historico.aspx.cs">
-      <DependentUpon>Historico.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Page\Historico.aspx.designer.cs">
-      <DependentUpon>Historico.aspx</DependentUpon>
     </Compile>
     <Compile Include="Page\Clientes.aspx.cs">
       <DependentUpon>Clientes.aspx</DependentUpon>

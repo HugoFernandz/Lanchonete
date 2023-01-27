@@ -14,9 +14,16 @@ namespace SistemaLoja01.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
+            if (Session["CriptoLogin"] != null)
             {
-                divBuscar.Visible = true;
+                if (!Page.IsPostBack)
+                {
+                    divBuscar.Visible = true;
+                }
+            }
+            else
+            {
+                Response.Redirect("https://localhost:44335/Login.aspx");
             }
         }
         protected void Busca_Click(object sender, EventArgs e)
@@ -124,7 +131,7 @@ namespace SistemaLoja01.Page
 
             rowfinaliza.Visible = false;
             int retorno = cadastro.Create(servico);
-            if(retorno == 1)
+            if (retorno == 1)
             {
                 product.nome = ddlCTipoProduto.SelectedItem.ToString();
                 product.quantidade = Convert.ToInt32(txtQuantidade.Value);

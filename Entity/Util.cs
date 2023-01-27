@@ -47,14 +47,6 @@ namespace SistemaLoja01.Entity
                     NomeDropDown.DataBind();
                     NomeDropDown.Items.Insert(0, " Selecione ");
                     break;
-                    //case 5:
-                    //    NomeDropDown.DataValueField = "IdUsuario";
-                    //    NomeDropDown.DataTextField = "Nome";
-                    //    NomeDropDown.DataSource = usuario.All();
-                    //    NomeDropDown.DataBind();
-                    //    NomeDropDown.Items.Insert(0, " Selecione ");
-                    //    break;
-
             }
         }
     }

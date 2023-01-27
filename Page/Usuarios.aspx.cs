@@ -13,9 +13,9 @@ namespace SistemaLoja01.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (Session["CriptoLogin"] != null)
-            //{
-            if (!Page.IsPostBack)
+            if (Session["CriptoLogin"] != null)
+            {
+                if (!Page.IsPostBack)
             {
                 Util util = new Util();
                 util.ListaDropdown(ddlBTipoUsuario, ((int)eTipoDrop.TipoUsuario));
@@ -23,11 +23,11 @@ namespace SistemaLoja01.Page
 
                 divBuscar.Visible = true;
             }
-            //}
-            //else
-            //{
-            //    Response.Redirect("Login.aspx");
-            //}
+            }
+            else
+            {
+                Response.Redirect("https://localhost:44335/Login.aspx");
+            }
         }
         protected void Busca_Click(object sender, EventArgs e)
         {
@@ -187,9 +187,6 @@ namespace SistemaLoja01.Page
             {
                 txtBuscaNome.Value = string.Empty;
             }
-
-            //txterro.InnerText = string.Empty;
-            //txtsucesso.InnerText = string.Empty;
 
             if (Session["IdUserAlterar"] != null) Session["IdUserAlterar"] = null;
         }

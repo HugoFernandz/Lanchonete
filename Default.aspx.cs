@@ -11,14 +11,14 @@ namespace SistemaLoja01
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (Session["CriptoLogin"] != null)
-            //{
-                Session["CriptoLogin"] = "PAxakBVXAo8="; // TESTE PARA IMPLEMENTAÇÕES
-            //}
-            //else
-            //{
-            //    Response.Redirect("Login.aspx");
-            //}
+            if (Session["CriptoLogin"] != null)
+            {
+                Session["CriptoLogin"] = "PAxakBVXAo8=";
+            }
+            else
+            {
+                Response.Redirect("Login.aspx");
+            }
         }
     }
 }
