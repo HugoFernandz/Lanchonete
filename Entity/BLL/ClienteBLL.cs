@@ -73,6 +73,17 @@ namespace SistemaLoja01.Entity.BLL
                 throw new Exception(ex.Message);
             }
         }
-
+        public DataSet All()
+        {
+            try
+            {
+                DataSet consult = client.Cadastro_All_Cliente();
+                return consult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

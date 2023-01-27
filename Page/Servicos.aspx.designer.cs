@@ -60,22 +60,13 @@ namespace SistemaLoja01.Page
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divBuscar;
 
         /// <summary>
-        /// Controle txtCliente.
+        /// Controle BuscarNome.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtCliente;
-
-        /// <summary>
-        /// Controle txtData.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtData;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText BuscarNome;
 
         /// <summary>
         /// Controle divRegistros.
@@ -85,15 +76,6 @@ namespace SistemaLoja01.Page
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divRegistros;
-
-        /// <summary>
-        /// Controle txtBuscaNome.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtBuscaNome;
 
         /// <summary>
         /// Controle GridViewServicos.
@@ -114,22 +96,13 @@ namespace SistemaLoja01.Page
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divCadastro;
 
         /// <summary>
-        /// Controle txtnome.
+        /// Controle ddlTipoCliente.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtnome;
-
-        /// <summary>
-        /// Controle txtpreco.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtpreco;
+        protected global::System.Web.UI.WebControls.DropDownList ddlTipoCliente;
 
         /// <summary>
         /// Controle ddlCTipoProduto.
@@ -141,30 +114,66 @@ namespace SistemaLoja01.Page
         protected global::System.Web.UI.WebControls.DropDownList ddlCTipoProduto;
 
         /// <summary>
-        /// Controle txtquantidade.
+        /// Controle txtQuantidade.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtquantidade;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtQuantidade;
 
         /// <summary>
-        /// Controle flexSwitchCheckDefault.
+        /// Controle btnCadastrar.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox flexSwitchCheckDefault;
+        protected global::System.Web.UI.WebControls.Button btnCadastrar;
 
         /// <summary>
-        /// Controle btncadastro.
+        /// Controle rowfinaliza.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btncadastro;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl rowfinaliza;
+
+        /// <summary>
+        /// Controle txtunidade.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtunidade;
+
+        /// <summary>
+        /// Controle txttotal.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txttotal;
+
+        /// <summary>
+        /// Controle ddlTipoPagamento.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlTipoPagamento;
+
+        /// <summary>
+        /// Controle btnfinalizar.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnfinalizar;
     }
 }

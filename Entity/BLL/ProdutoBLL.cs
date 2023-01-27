@@ -72,5 +72,31 @@ namespace SistemaLoja01.Entity.BLL
                 throw new Exception(ex.Message);
             }
         }
+        public DataSet All()
+        {
+            try
+            {
+                DataSet consult = product.Cadastro_All_Produto();
+                return consult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public int DarBaixa(Produto prod)
+        {
+            try
+            {
+                int value = product.Cadastro_Estoque_Produto(prod);
+
+                if (value == 1) return 1;
+                else return 0;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

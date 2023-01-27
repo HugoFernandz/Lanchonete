@@ -1,4 +1,5 @@
 ﻿using SistemaLoja01.Entity;
+using SistemaLoja01.Entity.BLL;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,7 +12,6 @@ namespace SistemaLoja01.Page
 {
     public partial class Servicos : System.Web.UI.Page
     {
-        //Session["frmServicos"] = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -27,71 +27,26 @@ namespace SistemaLoja01.Page
             divRegistros.Visible = true;
             divCadastro.Visible = false;
 
-            string nomecliente = txtCliente.Value;
-            //DateTime databusca = Convert.ToDateTime(txtData.Value);
+            Servico servico = new Servico();
+            servico.nomecliente = BuscarNome.Value;
 
-            // buscar banco
+            if (string.IsNullOrEmpty(BuscarNome.Value))
+            {
+                msgCadastroErro.Visible = true;
+                txterro.Visible = true;
+                txterro.InnerText = "Obrigatório parametro para consulta !";
+            }
+            else
+            {
+                ServicoBLL service = new ServicoBLL();
+                DataSet dt = service.Read(servico);
 
+                GridViewServicos.EditIndex = -1; // REMOVER CAMPOS EDITADOS
+                GridViewServicos.DataSource = dt;
+                GridViewServicos.DataBind();
 
-            DataTable data = new DataTable();
-
-            data.Columns.Add("IdServico");
-            data.Columns.Add("IdCliente");
-            data.Columns.Add("NomeCliente");
-            data.Columns.Add("FormaPagamento");
-            data.Columns.Add("Atendente");
-            data.Columns.Add("IdProduto");
-            data.Columns.Add("NomeProduto");
-            data.Columns.Add("Quantidade");
-            data.Columns.Add("Preco");
-            data.Columns.Add("TotalProduto");
-
-            data.Rows.Add("1", "1", "João", "Debito", "José", "1", "Itaipava Lata 360ml", "2", "3,00", "6,00");
-            data.Rows.Add("2", "2", "Maria", "Credito", "José", "2", "Skol Lata 360ml", "2", "5,00", "10,00");
-            data.Rows.Add("3", "3", "Paulo", "Pix", "José", "3", "X-Tudo", "2", "10,00", "20,00");
-
-
-            GridViewServicos.EditIndex = -1; // REMOVER CAMPOS EDITADOS
-            GridViewServicos.DataSource = data;
-            GridViewServicos.DataBind();
-
-            Limpa_Campos();
-        }
-        protected void BuscaNome_Click(object sender, EventArgs e)
-        {
-            msgCadastroSucesso.Visible = false;
-            msgCadastroErro.Visible = false;
-            divBuscar.Visible = false;
-            divRegistros.Visible = true;
-            divCadastro.Visible = false;
-
-            string nomeproduto = txtBuscaNome.Value;
-
-            // buscar banco
-
-            DataTable data = new DataTable();
-
-            data.Columns.Add("IdServico");
-            data.Columns.Add("IdCliente");
-            data.Columns.Add("NomeCliente");
-            data.Columns.Add("FormaPagamento");
-            data.Columns.Add("Atendente");
-            data.Columns.Add("IdProduto");
-            data.Columns.Add("NomeProduto");
-            data.Columns.Add("Quantidade");
-            data.Columns.Add("Preco");
-            data.Columns.Add("TotalProduto");
-
-            data.Rows.Add("1", "1", "João", "Em aberto", "José", "1", "Itaipava Lata 360ml", "2", "3,00", "6,00");
-            data.Rows.Add("2", "2", "Maria", "Em aberto", "José", "2", "Skol Lata 360ml", "2", "5,00", "10,00");
-            data.Rows.Add("3", "3", "Paulo", "Em aberto", "José", "3", "X-Tudo", "2", "10,00", "20,00");
-
-            data.Clear();
-
-            GridViewServicos.DataSource = data;
-            GridViewServicos.DataBind();
-
-            Limpa_Campos();
+                Limpa_Campos();
+            }
         }
         protected void NovoCadastro_Click(object sender, EventArgs e)
         {
@@ -102,45 +57,33 @@ namespace SistemaLoja01.Page
             divBuscar.Visible = false;
             divRegistros.Visible = false;
             divCadastro.Visible = true;
-            flexSwitchCheckDefault.Checked = true;
+
+            Util util = new Util();
+            util.ListaDropdown(ddlTipoCliente, ((int)eTipoDrop.Cliente));
+            util.ListaDropdown(ddlCTipoProduto, ((int)eTipoDrop.Produto));
+            util.ListaDropdown(ddlTipoPagamento, ((int)eTipoDrop.Pagamento));
         }
         protected void Cadastro_Click(object sender, EventArgs e)
         {
-            Produto produto = new Produto();
+            Util util = new Util();
+            Produto prod = new Produto();
+            ProdutoBLL produto = new ProdutoBLL();
 
-            if (btncadastro.Text == "Salvar")
-            {
-                produto.nome = txtnome.Value;
-                produto.preco = Convert.ToDouble(txtpreco.Value);
-                produto.quantidade = Convert.ToInt32(txtquantidade.Value);
-                produto.tipoproduto = ddlCTipoProduto.SelectedIndex;
-                produto.status = flexSwitchCheckDefault.Checked;
-            }
-            else if (btncadastro.Text == "Alterar")
-            {
-                produto.nome = txtnome.Value;
-                produto.preco = Convert.ToDouble(txtpreco.Value);
-                produto.quantidade = Convert.ToInt32(txtquantidade.Value);
-                produto.tipoproduto = ddlCTipoProduto.SelectedIndex;
-                produto.status = flexSwitchCheckDefault.Checked;
-            }
+            rowfinaliza.Visible = true;
 
-            //msgCadastroSucesso.Visible = true;
-            //txtsucesso.Visible = true;
-            //txtsucesso.InnerText = "Produto Cadastrado com sucesso !!!";
-            //msgCadastroErro.Visible = false;
 
-            //msgCadastroErro.Visible = true;
-            //txterro.Visible = true;
-            //txterro.InnerText = "Erro ao Cadastrar Produto ! ";
-            //msgCadastroSucesso.Visible = false;
+            prod.nome = ddlCTipoProduto.SelectedItem.ToString();
+            DataSet dtproduto = produto.Read(prod);
+            int qtdd = Convert.ToInt32(txtQuantidade.Value);
+            double precoproduto = Convert.ToDouble(dtproduto.Tables[0].Rows[0]["Preco"].ToString());
+            double totalproduto = precoproduto * qtdd;
+            string nomecliente = ddlTipoCliente.SelectedItem.ToString();
 
-            Limpa_Campos();
+            txtunidade.Value = "R$ " + precoproduto;
+            txttotal.Value = "R$ " + totalproduto;
         }
         protected void VoltarBuscar_Click(object sender, EventArgs e)
         {
-            if (btncadastro.Text == "Alterar") btncadastro.Text = "Salvar";
-
             Limpa_Campos();
 
             msgCadastroSucesso.Visible = false;
@@ -153,49 +96,59 @@ namespace SistemaLoja01.Page
         {
             if (divBuscar.Visible)
             {
-                //BuscarProduto.Value = string.Empty;
-                //ddlBTipoProduto.SelectedIndex = 0;
+                BuscarNome.Value = string.Empty;
             }
             if (divCadastro.Visible)
             {
-                txtnome.Value = string.Empty;
-                txtpreco.Value = string.Empty;
-                txtquantidade.Value = string.Empty;
+                ddlTipoCliente.SelectedIndex = 0;
+                ddlTipoPagamento.SelectedIndex = 0;
                 ddlCTipoProduto.SelectedIndex = 0;
-                flexSwitchCheckDefault.Checked = false;
-            }
-            if (divRegistros.Visible)
-            {
-                txtBuscaNome.Value = string.Empty;
+                txtunidade.Value = string.Empty;
+                txttotal.Value = string.Empty;
+                txtQuantidade.Value = string.Empty;
             }
         }
-        protected void GridViewProdutos_RowEditing(object sender, GridViewEditEventArgs e)
+        protected void btnfinalizar_Click(object sender, EventArgs e)
         {
-            msgCadastroSucesso.Visible = false;
-            msgCadastroErro.Visible = false;
-            divBuscar.Visible = false;
-            divRegistros.Visible = false;
-            divCadastro.Visible = true;
+            ServicoBLL cadastro = new ServicoBLL();
+            ProdutoBLL produto = new ProdutoBLL();
+            Servico servico = new Servico();
+            Produto product = new Produto();
 
-            //int iduser = int.Parse(GridViewUsuarios.DataKeys[e.NewEditIndex].Value.ToString());
+            servico.nomecliente = ddlTipoCliente.SelectedItem.ToString();
+            servico.nomeproduto = ddlCTipoProduto.SelectedItem.ToString();
+            servico.valorproduto = txtunidade.Value;
+            servico.valortotal = txttotal.Value;
+            servico.quantidade = Convert.ToInt32(txtQuantidade.Value);
+            servico.Formapagamento = ddlTipoPagamento.SelectedItem.ToString();
 
-            // buscar dados do usuario no banco
-
-            Produto produto = new Produto();
-
-            produto.nome = "Itaipava Lata 360ml";
-            produto.preco = 3.00;
-            produto.quantidade = 10;
-            produto.status = Convert.ToBoolean(Convert.ToInt32(1));
-            produto.tipoproduto = 1;
-
-            txtnome.Value = produto.nome;
-            txtpreco.Value = produto.preco.ToString();
-            txtquantidade.Value = produto.quantidade.ToString();
-            ddlCTipoProduto.SelectedIndex = produto.tipoproduto;
-            flexSwitchCheckDefault.Checked = produto.status;
-
-            btncadastro.Text = "Alterar";
+            rowfinaliza.Visible = false;
+            int retorno = cadastro.Create(servico);
+            if(retorno == 1)
+            {
+                product.nome = ddlCTipoProduto.SelectedItem.ToString();
+                product.quantidade = Convert.ToInt32(txtQuantidade.Value);
+                int atualizaestoque = produto.DarBaixa(product);
+                if (atualizaestoque == 1)
+                {
+                    msgCadastroSucesso.Visible = true;
+                    txtsucesso.Visible = true;
+                    txtsucesso.InnerText = "Cadastrado com sucesso";
+                }
+                else
+                {
+                    msgCadastroErro.Visible = true;
+                    txterro.Visible = true;
+                    txterro.InnerText = "Servico cadastrado, mas ocorreu um erro ao atualizar estoque ! ";
+                }
+                Limpa_Campos();
+            }
+            else
+            {
+                msgCadastroErro.Visible = true;
+                txterro.Visible = true;
+                txterro.InnerText = "Erro ao cadastar Serviço ! ";
+            }
         }
     }
 }

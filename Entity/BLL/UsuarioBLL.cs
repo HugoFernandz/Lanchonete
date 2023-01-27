@@ -88,5 +88,17 @@ namespace SistemaLoja01.Entity.BLL
                 throw new Exception(ex.Message);
             }
         }
+        public DataSet All()
+        {
+            try
+            {
+                DataSet consult = usuario.Cadastro_All_Usuarios();
+                return consult;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

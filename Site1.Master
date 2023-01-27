@@ -29,12 +29,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="../Page/Servicos.aspx">Servicos</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../Page/Historico.aspx">Historico</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../Page/Financeiro.aspx">Financeiro</a>
-                    </li>
                 </ul>
                 <form class="d-flex">
                     <a href="Login.aspx"><asp:Image runat="server" ImageUrl="~/Images/logout.png"/></a>

@@ -97,8 +97,10 @@
     </Compile>
     <Compile Include="Entity\BLL\ProdutoBLL.cs" />
     <Compile Include="Entity\BLL\ClienteBLL.cs" />
+    <Compile Include="Entity\BLL\ServicoBLL.cs" />
     <Compile Include="Entity\BLL\UsuarioBLL.cs" />
     <Compile Include="Entity\Conexao.cs" />
+    <Compile Include="Entity\DAL\ServicoDAL.cs" />
     <Compile Include="Entity\DAL\ProdutoDAL.cs" />
     <Compile Include="Entity\DAL\ClienteDAL.cs" />
     <Compile Include="Entity\DAL\UsuarioDAL.cs" />
@@ -110,6 +112,7 @@
     <Compile Include="Entity\Enum\eTipoDrop.cs" />
     <Compile Include="Entity\Pessoa.cs" />
     <Compile Include="Entity\Produto.cs" />
+    <Compile Include="Entity\Servico.cs" />
     <Compile Include="Entity\Usuario.cs" />
     <Compile Include="Entity\Util.cs" />
     <Compile Include="Erro.aspx.cs">

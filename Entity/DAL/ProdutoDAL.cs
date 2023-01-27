@@ -145,5 +145,67 @@ namespace SistemaLoja01.Entity.DAL
                 throw new Exception(ex.Message);
             }
         }
+        public DataSet Cadastro_All_Produto()
+        {
+            Conexao conexao = new Conexao();
+            try
+            {
+                DataSet ds = new DataSet();
+                SqlCommand cmd = new SqlCommand();
+
+                cmd.CommandText = "dbo.All_Produto";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Connection = conexao.Conectar();
+                cmd.ExecuteNonQuery();
+
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+                da.Fill(ds);
+
+                return ds;
+            }
+            catch (SqlException ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        public int Cadastro_Estoque_Produto(Produto produto)
+        {
+            Conexao conexao = new Conexao();
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "dbo.Estoque_Produto";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.Add("@nome", SqlDbType.VarChar).Value = produto.nome;
+                cmd.Parameters.Add("@quantidade", SqlDbType.Int).Value = produto.quantidade;
+
+                cmd.Connection = conexao.Conectar();
+                cmd.ExecuteNonQuery();
+
+                int idRetorno = 1;
+
+                return idRetorno;
+            }
+            catch (SqlException sqlEx)
+            {
+                throw new Exception("Erro ao incluir dados: " + sqlEx.Message);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro ao acessar dados: " + ex.Message);
+            }
+            finally
+            {
+                conexao.Desconectar();
+            }
+        }
     }
 }

@@ -10,7 +10,6 @@ namespace SistemaLoja01.Entity
         A_Vista = 1,
         Credito = 2,
         Debito = 3,
-        Pix = 4,
-        Em_Aberto = 5
+        Pix = 4
     }
 }
